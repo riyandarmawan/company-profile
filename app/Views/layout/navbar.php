@@ -1,0 +1,28 @@
+<header class="header">
+    <div class="header-left">
+        <span class="material-symbols-outlined hamburger-menu">
+            menu
+        </span>
+        <a href="#">Company Profile</a>
+    </div>
+
+    <nav class="navigation">
+        <div class="dropdown">
+            <a href="#home">Beranda</a>
+            <span class="material-symbols-outlined dropdown-toggle">
+                expand_more
+            </span>
+            <div class="dropdown-menu">
+                <a href="#home">Beranda</a>
+                <a href="#news">Berita</a>
+                <a href="#about">Tentang Kami</a>
+                <a href="#contact">Kontak Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="registration">
+        <a href="#" class="login">Login</a>
+        <a href="#" class="register">Register</a>
+    </div>
+</header>
