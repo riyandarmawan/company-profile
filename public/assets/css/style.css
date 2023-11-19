@@ -80,6 +80,7 @@ body {
     border-radius: .5rem;
     position: absolute;
     top: 40px;
+    left: 0;
     box-shadow: 0 0 .3rem black;
     display: none;
 }
