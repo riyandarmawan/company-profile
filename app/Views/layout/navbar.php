@@ -8,7 +8,7 @@
 
     <nav class="navigation">
         <div class="dropdown">
-            <a href="#home">Beranda</a>
+            <a href="/">Beranda</a>
             <span class="material-symbols-outlined dropdown-toggle">
                 expand_more
             </span>
@@ -19,6 +19,7 @@
                 <a href="#contact">Kontak Kami</a>
             </div>
         </div>
+        <a href="/news">Berita</a>
     </nav>
 
     <div class="registration">

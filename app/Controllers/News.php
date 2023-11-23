@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\NewsModel;
 
-class Company extends BaseController
+class News extends BaseController
 {
     protected $newsModel;
 
@@ -16,10 +16,10 @@ class Company extends BaseController
     public function index(): string
     {
         $data = [
-            'title' => 'Company Profile',
-            'news' => $this->newsModel->paginate(4, 'news')
+            'title' => 'Berita',
+            'news' => $this->newsModel->getNews()
         ];
 
-        return view('pages/home', $data);
+        return view('news/index', $data);
     }
 }

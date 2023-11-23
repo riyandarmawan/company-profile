@@ -57,15 +57,21 @@ body {
 
 .header .navigation {
     transition: .5s;
+    display: flex;
+    align-items: center;
+}
+
+.header .navigation * {
+    font-weight: 500;
 }
 
 .header .navigation .dropdown {
     display: flex;
     align-items: center;
+    margin: 0 .5rem;
 }
 
 .header .navigation .dropdown > a {
-    font-weight: 500;
     margin-right: .25rem;
 }
 
@@ -263,6 +269,77 @@ body {
 }
 /* news end */
 
+/* page news start */
+.container {
+    padding: 6rem 10% 0;
+    height: 100vh;
+}
+
+.container .content .inner {
+    overflow: hidden;
+    width: 45rem;
+    height: 28rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.container .content .inner .flow {
+    display: flex;
+}
+
+.container .content .inner .flow .latest-news {
+    overflow: hidden;
+    transition: .3s;
+    height: 28rem;
+    width: 45rem;
+    border-radius: 1rem;
+    display: inline-block;
+    position: absolute;
+    right: -100%;
+    left: 100%;
+}
+
+.container .content .inner .flow .latest-news#latest-news-1.active, .container .content .inner .flow .latest-news#latest-news-2.active, .container .content .inner .flow .latest-news#latest-news-3.active {
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.container .content .inner .flow .latest-news#latest-news-1.no-active, .container .content .inner .flow .latest-news#latest-news-2.no-active, .container .content .inner .flow .latest-news#latest-news-3.no-active {
+    left: -100%;
+    right: 100%;
+}
+
+.container .content .inner .flow .latest-news img {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+    object-position: center;
+    position: relative;
+}
+
+.container .content .inner .flow .latest-news img:hover {
+    transform: scale(1.1);
+}
+
+.container .content .inner .flow .latest-news .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: rgb(0, 0, 0, .5);
+}
+
+.container .content .inner .flow .latest-news .title h3 {
+    font-size: 1.2rem;
+    color: white;
+    width: 70%;
+}
+/* page news end */
+
 /* media queries */
 @media (min-width: 1920) {
     html {
@@ -309,6 +386,12 @@ body {
         height: 100vh;        
         box-shadow: 0.2rem 0 5px -0.15rem gray;
         padding: 1rem;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .header .navigation > * {
+        margin: .5rem 0;
     }
 
     .header .navigation.show {
@@ -323,6 +406,8 @@ body {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        width: 100%;
+        margin: 0;
     }
 
     .header .navigation .dropdown > a {
