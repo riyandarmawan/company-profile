@@ -30,114 +30,83 @@ document.addEventListener("click", (e) => {
 });
 
 // news page start('latest-news')
-const latestNews1 = document.getElementById("latest-news-1");
-const latestNews2 = document.getElementById("latest-news-2");
-const latestNews3 = document.getElementById("latest-news-3");
+const latestNews = ["latest-news-1", "latest-news-2", "latest-news-3"].map(
+    (id) => document.getElementById(id)
+);
+const indicatorNews = [
+    "indicator-news-1",
+    "indicator-news-2",
+    "indicator-news-3",
+].map((id) => document.getElementById(id));
 
-const indicatorNews1 = document.getElementById("indicator-news-1");
-const indicatorNews2 = document.getElementById("indicator-news-2");
-const indicatorNews3 = document.getElementById("indicator-news-3");
+let activeIndex = 0;
 
-const previous = document.getElementById("previous");
-const next = document.getElementById("next");
-
-latestNews1.classList.add('active');
-
-function indicatorNews() {
-    if (latestNews1.classList.contains("active")) {
-        indicatorNews1.classList.add("active");
-        indicatorNews3.classList.remove("active");
-        indicatorNews2.classList.remove("active");
-    } else if (latestNews2.classList.contains("active")) {
-        indicatorNews2.classList.add("active");
-        indicatorNews1.classList.remove("active");
-        indicatorNews3.classList.remove("active");
-    } else if (latestNews3.classList.contains("active")) {
-        indicatorNews3.classList.add("active");
-        indicatorNews2.classList.remove("active");
-        indicatorNews1.classList.remove("active");
-    }
+function updateIndicators() {
+    latestNews.forEach((news, index) => {
+        if (index === activeIndex) {
+            indicatorNews[index].classList.add("active");
+        } else {
+            indicatorNews[index].classList.remove("active");
+        }
+    });
 }
 
-setInterval(indicatorNews, 100);
-
 function newsLoop() {
-    if (latestNews1.classList.contains("active")) {
-        latestNews1.classList.replace("active", "no-active");
-        latestNews2.classList.add("active");
-    } else if (latestNews2.classList.contains("active")) {
-        latestNews2.classList.replace("active", "no-active");
-        latestNews3.classList.add("active");
-    } else if (latestNews3.classList.contains("active")) {
-        latestNews3.classList.replace("active", "no-active");
-        latestNews1.classList.add("active");
-    }
+    latestNews[activeIndex].classList.replace("active", "no-active");
+    activeIndex = (activeIndex + 1) % latestNews.length;
+    latestNews[activeIndex].classList.add("active");
 
     setTimeout(() => {
-        if (latestNews1.classList.contains("no-active")) {
-            latestNews1.classList.remove("no-active");
-        } else if (latestNews2.classList.contains("no-active")) {
-            latestNews2.classList.remove("no-active");
-        } else if (latestNews3.classList.contains("no-active")) {
-            latestNews3.classList.remove("no-active");
-        }
+        latestNews.forEach((news, index) => {
+            if (index !== activeIndex && news.classList.contains("no-active")) {
+                news.classList.remove("no-active");
+            }
+        });
     }, 500);
 
-    indicatorNews();
+    updateIndicators();
 }
 
 let intervalId = setInterval(newsLoop, 3000);
 
+let isButtonDisabled = false;
+
 previous.onclick = () => {
+    if (isButtonDisabled) return;
+    isButtonDisabled = true;
+    setTimeout(() => (isButtonDisabled = false), 700);
+
     clearInterval(intervalId);
-    
-    if (latestNews1.classList.contains("active")) {
-        latestNews3.classList.add("no-active");
-        setTimeout(() => {
-            latestNews1.classList.remove("active");
-            latestNews3.classList.replace("no-active", "active");
-        }, 500);
-    }
-    if (latestNews2.classList.contains("active")) {
-        latestNews1.classList.add("no-active");
-        setTimeout(() => {
-            latestNews2.classList.remove("active");
-            latestNews1.classList.replace("no-active", "active");
-        }, 500);
-    }
-    if (latestNews3.classList.contains("active")) {
-        latestNews2.classList.add("no-active");
-        setTimeout(() => {
-            latestNews3.classList.remove("active");
-            latestNews2.classList.replace("no-active", "active");
-        }, 500);
-    }
+
+    let beforeIndex = activeIndex;
+
+    activeIndex = (activeIndex - 1 + latestNews.length) % latestNews.length;
+    latestNews[activeIndex].classList.add("no-active");
+    setTimeout(() => {
+        latestNews[beforeIndex].classList.remove("active");
+        latestNews[activeIndex].classList.replace("no-active", "active");
+        updateIndicators();
+    }, 400);
+
+
+    setTimeout(() => {
+        latestNews.forEach((news, index) => {
+            if (index !== activeIndex && news.classList.contains("no-active")) {
+                news.classList.remove("no-active");
+            }
+        });
+    }, 500);
 
     intervalId = setInterval(newsLoop, 3000);
 };
 
 next.onclick = () => {
+    if (isButtonDisabled) return;
+    isButtonDisabled = true;
+    setTimeout(() => (isButtonDisabled = false), 1000);
+
     clearInterval(intervalId);
-
-    if (latestNews1.classList.contains("active")) {
-        latestNews1.classList.replace("active", "no-active");
-        latestNews2.classList.add("active");
-        setTimeout(() => {
-            latestNews1.classList.remove("no-active");
-        }, 500);
-    } else if (latestNews2.classList.contains("active")) {
-        latestNews2.classList.replace("active", "no-active");
-        latestNews3.classList.add("active");
-        setTimeout(() => {
-            latestNews2.classList.remove("no-active");
-        }, 500);
-    } else if (latestNews3.classList.contains("active")) {
-        latestNews3.classList.replace("active", "no-active");
-        latestNews1.classList.add("active");
-        setTimeout(() => {
-            latestNews3.classList.remove("no-active");
-        }, 500);
-    }
-
+    newsLoop();
+    updateIndicators();
     intervalId = setInterval(newsLoop, 3000);
 };

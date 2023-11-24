@@ -20,7 +20,7 @@
             </ul>
             <?php $count = 1; ?>
             <?php foreach($news as $n) : ?>
-                <a href="#" class="latest-news" id="latest-news-<?= $count; ?>">
+                <a href="#" class="latest-news <?= $count == 1 ? 'active' : ''; ?>" id="latest-news-<?= $count; ?>">
                     <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
                     <div class="title">
                         <h3><?= $n['title']; ?></h3>
