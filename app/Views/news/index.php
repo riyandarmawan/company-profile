@@ -5,24 +5,29 @@
 <div class="container">
     <main class="content">
         <div class="inner">
-            <a href="#" class="latest-news active" id="latest-news-1">
-                <img src="/assets/img/news/1.jpg" alt="Mouse">
-                <div class="title">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, ut?</h3>
-                </div>
-            </a>
-            <a href="#" class="latest-news" id="latest-news-2">
-                <img src="/assets/img/news/2.jpg" alt="Mouse">
-                <div class="title">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, ut?</h3>
-                </div>
-            </a>
-            <a href="#" class="latest-news" id="latest-news-3">
-                <img src="/assets/img/news/3.jpg" alt="Mouse">
-                <div class="title">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, ut?</h3>
-                </div>
-            </a>
+            <div class="news-control">
+                <span class="material-symbols-outlined" id="previous">
+                    chevron_left
+                </span>
+                <span class="material-symbols-outlined" id="next">
+                    chevron_right
+                </span>
+            </div>
+            <ul class="indicator-news">
+                <li class="active" id="indicator-news-1"></li>
+                <li id="indicator-news-2"></li>
+                <li id="indicator-news-3"></li>
+            </ul>
+            <?php $count = 1; ?>
+            <?php foreach($news as $n) : ?>
+                <a href="#" class="latest-news" id="latest-news-<?= $count; ?>">
+                    <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
+                    <div class="title">
+                        <h3><?= $n['title']; ?></h3>
+                    </div>
+                </a>
+                <?php $count++ ?>
+            <?php endforeach; ?>
         </div>
     </main>
 </div>

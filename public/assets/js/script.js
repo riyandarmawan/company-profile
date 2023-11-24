@@ -34,37 +34,110 @@ const latestNews1 = document.getElementById("latest-news-1");
 const latestNews2 = document.getElementById("latest-news-2");
 const latestNews3 = document.getElementById("latest-news-3");
 
-function newsLoop() {
-    setTimeout(() => {
-        latestNews1.classList.remove("active");
-        latestNews2.classList.add("active");
-        latestNews1.classList.add("no-active");
-    }, 3000);
+const indicatorNews1 = document.getElementById("indicator-news-1");
+const indicatorNews2 = document.getElementById("indicator-news-2");
+const indicatorNews3 = document.getElementById("indicator-news-3");
 
-    setTimeout(() => {
-        latestNews1.classList.remove("no-active");
-    }, 3500);
+const previous = document.getElementById("previous");
+const next = document.getElementById("next");
 
-    setTimeout(() => {
-        latestNews2.classList.remove("active");
-        latestNews3.classList.add("active");
-        latestNews2.classList.add("no-active");
-    }, 6000);
+latestNews1.classList.add('active');
 
-    setTimeout(() => {
-        latestNews2.classList.remove("no-active");
-    }, 6500);
-
-    setTimeout(() => {
-        latestNews3.classList.remove("active");
-        latestNews1.classList.add("active");
-        latestNews3.classList.add("no-active");
-    }, 9000);
-
-    setTimeout(() => {
-        latestNews3.classList.remove("no-active");
-    }, 9500);
+function indicatorNews() {
+    if (latestNews1.classList.contains("active")) {
+        indicatorNews1.classList.add("active");
+        indicatorNews3.classList.remove("active");
+        indicatorNews2.classList.remove("active");
+    } else if (latestNews2.classList.contains("active")) {
+        indicatorNews2.classList.add("active");
+        indicatorNews1.classList.remove("active");
+        indicatorNews3.classList.remove("active");
+    } else if (latestNews3.classList.contains("active")) {
+        indicatorNews3.classList.add("active");
+        indicatorNews2.classList.remove("active");
+        indicatorNews1.classList.remove("active");
+    }
 }
 
-newsLoop()
-setInterval(newsLoop, 9500);
+setInterval(indicatorNews, 100);
+
+function newsLoop() {
+    if (latestNews1.classList.contains("active")) {
+        latestNews1.classList.replace("active", "no-active");
+        latestNews2.classList.add("active");
+    } else if (latestNews2.classList.contains("active")) {
+        latestNews2.classList.replace("active", "no-active");
+        latestNews3.classList.add("active");
+    } else if (latestNews3.classList.contains("active")) {
+        latestNews3.classList.replace("active", "no-active");
+        latestNews1.classList.add("active");
+    }
+
+    setTimeout(() => {
+        if (latestNews1.classList.contains("no-active")) {
+            latestNews1.classList.remove("no-active");
+        } else if (latestNews2.classList.contains("no-active")) {
+            latestNews2.classList.remove("no-active");
+        } else if (latestNews3.classList.contains("no-active")) {
+            latestNews3.classList.remove("no-active");
+        }
+    }, 500);
+
+    indicatorNews();
+}
+
+let intervalId = setInterval(newsLoop, 3000);
+
+previous.onclick = () => {
+    clearInterval(intervalId);
+    
+    if (latestNews1.classList.contains("active")) {
+        latestNews3.classList.add("no-active");
+        setTimeout(() => {
+            latestNews1.classList.remove("active");
+            latestNews3.classList.replace("no-active", "active");
+        }, 500);
+    }
+    if (latestNews2.classList.contains("active")) {
+        latestNews1.classList.add("no-active");
+        setTimeout(() => {
+            latestNews2.classList.remove("active");
+            latestNews1.classList.replace("no-active", "active");
+        }, 500);
+    }
+    if (latestNews3.classList.contains("active")) {
+        latestNews2.classList.add("no-active");
+        setTimeout(() => {
+            latestNews3.classList.remove("active");
+            latestNews2.classList.replace("no-active", "active");
+        }, 500);
+    }
+
+    intervalId = setInterval(newsLoop, 3000);
+};
+
+next.onclick = () => {
+    clearInterval(intervalId);
+
+    if (latestNews1.classList.contains("active")) {
+        latestNews1.classList.replace("active", "no-active");
+        latestNews2.classList.add("active");
+        setTimeout(() => {
+            latestNews1.classList.remove("no-active");
+        }, 500);
+    } else if (latestNews2.classList.contains("active")) {
+        latestNews2.classList.replace("active", "no-active");
+        latestNews3.classList.add("active");
+        setTimeout(() => {
+            latestNews2.classList.remove("no-active");
+        }, 500);
+    } else if (latestNews3.classList.contains("active")) {
+        latestNews3.classList.replace("active", "no-active");
+        latestNews1.classList.add("active");
+        setTimeout(() => {
+            latestNews3.classList.remove("no-active");
+        }, 500);
+    }
+
+    intervalId = setInterval(newsLoop, 3000);
+};
