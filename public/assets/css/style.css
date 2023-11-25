@@ -257,17 +257,11 @@ body {
     aspect-ratio: 45 / 28;
     border-radius: 1rem;
     position: relative;
+    display: flex;
 }
 
 .container .content .inner .news-control {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 11;
-    padding: 0 1rem;
-    position: absolute;
-    height: 100%;
-    width: 100%;
+    z-index: 2;
 }
 
 .container .content .inner .news-control span {
@@ -276,10 +270,16 @@ body {
     text-shadow: 2px 2px 4px black;
     cursor: pointer;
     margin-bottom: 2rem;
+    position: absolute;
+    top: 39%;
 }
 
-.container .content .inner .news-control span.end-previous, .container .content .inner .news-control span.end-next {
-    color: rgb(255, 255, 255, 0.5);
+.container .content .inner .news-control span:nth-child(1) {
+    left: 2%;
+}
+
+.container .content .inner .news-control span:nth-child(2) {
+    right: 2%;
 }
 
 .container .content .inner .indicator-news {
@@ -296,7 +296,7 @@ body {
     list-style-position: inside;
     list-style: circle;
     color: white;
-    z-index: 10;
+    z-index: 2;
 }
 
 .container .content .inner .indicator-news li.active {
@@ -307,6 +307,7 @@ body {
     display: flex;
     position: absolute;
     transition: .5s;
+    width: 300%;
 }
 
 .container .content .inner .flow.page-1 {
@@ -327,11 +328,10 @@ body {
 
 .container .content .inner .flow .latest-news {
     overflow: hidden;
-    transition: 0.3s;
-    width: 45rem;
-    aspect-ratio: 45 / 28;
     display: inline-block;
     position: relative;
+    width: 45rem;
+    aspect-ratio: 45 / 28;
 }
 
 .container .content .inner .flow .latest-news img {
@@ -452,7 +452,10 @@ body {
     /* news page start */
     .container .content .inner {
         width: 100%;
-        height: (100% * 28 / 45)rem;
+    }
+
+    .container .content .inner .flow .latest-news {
+        width: 300%;
     }
     /* news page end */
 }

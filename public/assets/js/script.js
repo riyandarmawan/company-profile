@@ -31,77 +31,47 @@ document.addEventListener("click", (e) => {
 
 // news page start('latest-news')
 const flow = document.querySelector(".flow");
-
-const indicatorNews1 = document.querySelector("#indicator-news-1");
-const indicatorNews2 = document.querySelector("#indicator-news-2");
-const indicatorNews3 = document.querySelector("#indicator-news-3");
-
+const indicators = Array.from(document.querySelectorAll("[id^='indicator-news-']"));
 const previous = document.querySelector("#previous");
 const next = document.querySelector("#next");
 
 function updateIndicator() {
-    if (flow.classList.contains("page-1")) {
-        indicatorNews3.classList.remove("active");
-        indicatorNews2.classList.remove("active");
-        indicatorNews1.classList.add("active");
-        previous.classList.add("end-previous");
-        next.classList.remove("end-next");
-    } else if (flow.classList.contains("page-2")) {
-        indicatorNews3.classList.remove("active");
-        indicatorNews1.classList.remove("active");
-        indicatorNews2.classList.add("active");
-        previous.classList.remove("end-previous");
-        next.classList.remove("end-next");
-    } else if (flow.classList.contains("page-3")) {
-        indicatorNews1.classList.remove("active");
-        indicatorNews2.classList.remove("active");
-        indicatorNews3.classList.add("active");
-        next.classList.add("end-next");
-    }
+    const activePage = flow.className.split(' ').find(className => className.startsWith('page-'));
+    const activeIndex = Number(activePage.split('-')[1]) - 1;
+
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle("active", index === activeIndex);
+    });
 }
 
 function newsLoop() {
-    if (flow.classList.contains("page-1")) {
-        flow.classList.replace("page-1", "page-2");
-    } else if (flow.classList.contains("page-2")) {
-        flow.classList.replace("page-2", "page-3");
-    } else if (flow.classList.contains("page-3")) {
-        flow.classList.replace("page-3", "page-1");
-    }
+    const activePage = flow.className.split(' ').find(className => className.startsWith('page-'));
+    const activeIndex = Number(activePage.split('-')[1]);
+    const newIndex = activeIndex % indicators.length + 1;
 
+    flow.classList.replace(activePage, `page-${newIndex}`);
     updateIndicator();
 }
 
 let intervalId = setInterval(newsLoop, 3000);
 
-let isButtonClicked = false;
-
 document.addEventListener("click", (e) => {
-    if (isButtonClicked) return;
-    isButtonClicked = true;
-    setTimeout(() => {
-        isButtonClicked = false;
-    }, 500);
+    if (previous.contains(e.target) || next.contains(e.target)) {
+        clearInterval(intervalId);
 
-    clearInterval(intervalId);
+        const activePage = flow.className.split(' ').find(className => className.startsWith('page-'));
+        const activeIndex = Number(activePage.split('-')[1]);
+        let newIndex;
 
-    if (previous.contains(e.target)) {
-        if (flow.classList.contains("page-2")) {
-            flow.classList.replace("page-2", "page-1");
-        } else if (flow.classList.contains("page-3")) {
-            flow.classList.replace("page-3", "page-2");
+        if (previous.contains(e.target)) {
+            newIndex = activeIndex === 1 ? indicators.length : activeIndex - 1;
+        } else {
+            newIndex = activeIndex % indicators.length + 1;
         }
+
+        flow.classList.replace(activePage, `page-${newIndex}`);
+        updateIndicator();
+
+        intervalId = setInterval(newsLoop, 3000);
     }
-
-    if (next.contains(e.target)) {
-        if (flow.classList.contains("page-1")) {
-            flow.classList.replace("page-1", "page-2");
-        } else if (flow.classList.contains("page-2")) {
-            flow.classList.replace("page-2", "page-3");
-        }
-    }
-
-    updateIndicator();
-
-    intervalId = setInterval(newsLoop, 3000);
 });
