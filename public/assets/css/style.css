@@ -255,19 +255,19 @@ body {
     overflow: hidden;
     width: 45rem;
     aspect-ratio: 45 / 28;
-    position: relative;
     border-radius: 1rem;
+    position: relative;
 }
 
 .container .content .inner .news-control {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
     z-index: 11;
-    width: 100%;
-    height: 100%;
     padding: 0 1rem;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 
 .container .content .inner .news-control span {
@@ -278,8 +278,8 @@ body {
     margin-bottom: 2rem;
 }
 
-.container .content .inner .news-control span:hover {
-    color: white;
+.container .content .inner .news-control span.end-previous, .container .content .inner .news-control span.end-next {
+    color: rgb(255, 255, 255, 0.5);
 }
 
 .container .content .inner .indicator-news {
@@ -303,39 +303,46 @@ body {
     list-style: disc;
 }
 
-.container .content .inner .latest-news {
+.container .content .inner .flow {
+    display: flex;
+    position: absolute;
+    transition: .5s;
+}
+
+.container .content .inner .flow.page-1 {
+    left: 0;
+}
+
+.container .content .inner .flow.page-2 {
+    left: -100%;
+}
+
+.container .content .inner .flow.page-3 {
+    left: -200%;
+}
+
+.container .content .inner .flow .news-control span:hover {
+    color: white;
+}
+
+.container .content .inner .flow .latest-news {
     overflow: hidden;
     transition: 0.3s;
-    height: 100%;
-    width: 100%;
+    width: 45rem;
+    aspect-ratio: 45 / 28;
     display: inline-block;
-    position: absolute;
-    right: -100%;
-    left: 100%;
-}
-
-.container .content .inner .latest-news#latest-news-1.active,
-.container .content .inner .latest-news#latest-news-2.active,
-.container .content .inner .latest-news#latest-news-3.active {
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 9;
-}
-
-.container .content .inner .latest-news#latest-news-1.no-active,
-.container .content .inner .latest-news#latest-news-2.no-active,
-.container .content .inner .latest-news#latest-news-3.no-active {
-    left: -100%;
-    right: 100%;
-}
-
-.container .content .inner .latest-news img {
-    width: 100%;
     position: relative;
 }
 
-.container .content .inner .latest-news .title {
-    position: absolute;
+.container .content .inner .flow .latest-news img {
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.container .content .inner .flow .latest-news .title {
     bottom: 0;
     left: 0;
     right: 0;
@@ -344,9 +351,10 @@ body {
     padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
+    position: absolute;
 }
 
-.container .content .inner .latest-news .title h3 {
+.container .content .inner .flow .latest-news .title h3 {
     font-size: 1.2rem;
     color: white;
     width: 70%;
