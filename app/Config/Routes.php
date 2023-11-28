@@ -8,3 +8,6 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'Home::index');
 $routes->get('/news', 'News::index');
+$routes->get('/home/contactSave', 'Home::contactSave');
+
+$routes->setAutoRoute(true);

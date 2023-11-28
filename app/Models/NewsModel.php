@@ -8,7 +8,7 @@ class NewsModel extends Model
 {
     protected $table = 'news';
     protected $useTimestamps = true;
-    protected $allowedFields = ['title', 'content'];
+    protected $allowedFields = ['title', 'content', 'image', 'alt'];
 
     public function getLatestNews()
     {

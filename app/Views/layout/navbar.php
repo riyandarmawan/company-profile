@@ -14,6 +14,7 @@
             </span>
             <div class="dropdown-menu">
                 <a href="#home">Beranda</a>
+                <a href="#contact">Kontak Kami</a>
             </div>
         </div>
         <a href="/news">Berita</a>
