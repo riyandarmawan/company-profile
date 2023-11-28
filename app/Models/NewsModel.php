@@ -10,8 +10,13 @@ class NewsModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = ['title', 'content'];
 
+    public function getLatestNews()
+    {
+        return $this->orderBy('id', 'DESC')->limit(3)->find();
+    }
+
     public function getNews()
     {
-        return $this->findAll();
+        return $this->orderBy('id', 'DESC')->offset(3)->limit(PHP_INT_MAX)->find();
     }
 }

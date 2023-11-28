@@ -15,11 +15,13 @@ class News extends BaseController
 
     public function index(): string
     {
+
         $data = [
             'title' => 'Berita',
-            'news' => $this->newsModel->getNews()
+            'latestNews' => $this->newsModel->getLatestNews(),
+            'news' => $this->newsModel->getNews(),
         ];
-
+        
         return view('news/index', $data);
     }
 }

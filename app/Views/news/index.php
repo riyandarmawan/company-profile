@@ -19,16 +19,26 @@
                 <li id="indicator-news-3"></li>
             </ul>
             <div class="flow page-1">
-                <?php foreach ($news as $n) : ?>
+                <?php foreach ($latestNews as $ln) : ?>
                     <a href="" class="latest-news">
-                        <img src=" /assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
+                        <img src=" /assets/img/news/<?= $ln['image']; ?>" alt="<?= $ln['alt']; ?>">
                         <div class="title">
-                            <h3><?= $n['title']; ?></h3>
+                            <h3><?= $ln['title']; ?></h3>
                         </div>
                     </a>
                 <?php endforeach; ?>
             </div>
         </div>
+
+        <?php foreach($news as $n) : ?>
+            <a href="#" class="other-news">
+                <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
+                <div class="teks">
+                    <h3><?= $n['title']; ?></h3>
+                    <p><?= word_limiter($n['content'], 20); ?></p>
+                </div>
+            </a>
+        <?php endforeach; ?>
     </main>
 </div>
 

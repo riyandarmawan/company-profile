@@ -3,7 +3,7 @@
         <span class="material-symbols-outlined hamburger-menu">
             menu
         </span>
-        <a href="#">Company Profile</a>
+        <a href="">My<span>Coffee</span></a>
     </div>
 
     <nav class="navigation">
@@ -14,9 +14,6 @@
             </span>
             <div class="dropdown-menu">
                 <a href="#home">Beranda</a>
-                <a href="#news">Berita</a>
-                <a href="#about">Tentang Kami</a>
-                <a href="#contact">Kontak Kami</a>
             </div>
         </div>
         <a href="/news">Berita</a>
