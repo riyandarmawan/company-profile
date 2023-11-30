@@ -22,6 +22,6 @@ class News extends BaseController
             'news' => $this->newsModel->getNews(),
         ];
         
-        return view('/news', $data);
+        return view('news/index', $data);
     }
 }

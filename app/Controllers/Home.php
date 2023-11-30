@@ -22,25 +22,4 @@ class Home extends BaseController
 
         return view('home/index', $data);
     }
-
-    public function contactCreate()
-    {
-        $data = [
-            'validation' => \config\Services::validation()
-        ];
-
-        return view('/', $data);
-    }
-
-    public function contactSave()
-    {
-        $this->contactModel->save([
-            'nama' => $this->request->getVar('nama'),
-            'email' => $this->request->getVar('email'),
-            'telepon' => $this->request->getVar('telepon'),
-            'pesan' => $this->request->getVar('pesan')
-        ]);
-
-        return redirect()->to('/');
-    }
 }

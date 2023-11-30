@@ -91,3 +91,6 @@ document.addEventListener("click", (e) => {
         intervalId = setInterval(newsLoop, 3000);
     }
 });
+
+// dashboard start
+// user start

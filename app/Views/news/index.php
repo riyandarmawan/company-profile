@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<div class="container">
+<div class="wrap">
     <main class="content">
         <div class="inner">
             <div class="news-control">

@@ -9,7 +9,7 @@
     <nav class="navigation">
         <div class="dropdown">
             <a href="/">Beranda</a>
-            <span class="material-symbols-outlined dropdown-toggle">
+            <span class="material-symbols-outlined dropdown-button">
                 expand_more
             </span>
             <div class="dropdown-menu">
