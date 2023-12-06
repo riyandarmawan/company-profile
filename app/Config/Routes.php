@@ -20,4 +20,9 @@ $routes->get('/dashboard/user/delete/(:num)', 'User::delete/$1');
 $routes->post('/home/contactSave', 'Contact::save');
 $routes->get('/dashboard/contact', 'Contact::index');
 
+$routes->get('/registration/register', 'registration::register');
+$routes->post('/registration/register', 'registration::save');
+$routes->get('/registration/login', 'registration::login');
+$routes->post('/registration/login', 'registration::take');
+
 $routes->setAutoRoute(true);

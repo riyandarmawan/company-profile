@@ -12,6 +12,48 @@
 </section>
 <!-- home end -->
 
+<!-- product start -->
+<section class="product" id="product">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Produk <span>Kami</span></h2>
+            <main class="content d-flex flex-wrap justify-content-center">
+                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                    <p class="mb-2 fs-7">IDR 13K</p>
+                </div>
+                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                    <p class="mb-2 fs-7">IDR 13K</p>
+                </div>
+                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                    <p class="mb-2 fs-7">IDR 13K</p>
+                </div>
+                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                    <p class="mb-2 fs-7">IDR 13K</p>
+                </div>
+                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                    <p class="mb-2 fs-7">IDR 13K</p>
+                </div>
+                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                    <p class="mb-2 fs-7">IDR 13K</p>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+<!-- product end -->
+
 <!-- contact start -->
 <section class="contact" id="contact">
     <main class="content">

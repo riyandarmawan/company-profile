@@ -12,8 +12,9 @@
             <span class="material-symbols-outlined dropdown-button">
                 expand_more
             </span>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu p-0">
                 <a href="#home">Beranda</a>
+                <a href="#product">Produk Kami</a>
                 <a href="#contact">Kontak Kami</a>
             </div>
         </div>
@@ -21,7 +22,7 @@
     </nav>
 
     <div class="registration">
-        <a href="#" class="login">Login</a>
-        <a href="#" class="register">Register</a>
+        <a href="/registration/login" class="login">Login</a>
+        <a href="/registration/register" class="register">Register</a>
     </div>
 </header>

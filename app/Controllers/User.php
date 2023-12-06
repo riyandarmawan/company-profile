@@ -11,9 +11,13 @@ class User extends BaseController
     {
         $user = new UserModel();
 
+        $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
+
         $data = [
             'title' => 'User',
-            'users' => $user->findAll()
+            'users' => $user->paginate(9, 'user'),
+            'pager' => $user->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('dashboard/user/index', $data);
@@ -33,7 +37,7 @@ class User extends BaseController
         $userModel = new UserModel();
 
         $userModel->save([
-        'nama' => $this->request->getVar('nama'),
+            'nama' => $this->request->getVar('nama'),
             'email' => $this->request->getVar('email'),
             'username' => $this->request->getVar('username'),
             'password' => $this->request->getVar('password'),
@@ -74,7 +78,8 @@ class User extends BaseController
         return redirect()->to(base_url() . 'dashboard/user');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $userModel = new UserModel();
 
         $userModel->delete($id);

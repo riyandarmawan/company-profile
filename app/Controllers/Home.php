@@ -2,23 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Models\contactModel;
-use App\Models\NewsModel;
+use CodeIgniter\HTTP\Header;
 
 class Home extends BaseController
 {
-    protected $contactModel;
-
-    public function __construct()
-    {
-        $this->contactModel = new ContactModel();
-    }
-
-    public function index(): string
+    public function index()
     {
         $data = [
             'title' => 'MyCoffee'
         ];
+
+        $session = \Config\Services::session();
+
+        dd($session->get('user')['nama']);
 
         return view('home/index', $data);
     }

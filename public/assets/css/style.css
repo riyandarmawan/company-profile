@@ -1,7 +1,7 @@
 :root {
     --primary: #a5653a;
-    --secondary: #583a25;
-    --background: rgb(19, 19, 19);
+    --secondary: #5a3b26;
+    --background: #131313;
     --color: white;
     --success: #5cb85c;
     --error: #d9534f;
@@ -24,6 +24,40 @@ body {
     color: var(--color);
     /* height: 2000px; */
 }
+
+/* bootstrap start */
+.container {
+    padding-top: 7rem;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.fs-7 {
+    font-size: .9rem;
+}
+
+.w-100vw {
+    width: 100vw;
+}
+
+.vh-85 {
+    height: 85vh;
+}
+
+.c-white {
+    color: var(--color);
+}
+
+.c-black {
+    color: var(--background);
+}
+
+.w-mc {
+    width: min-content !important;
+}
+/* bootstrap end */
 
 /* header start */
 .header {
@@ -303,6 +337,16 @@ body {
 }
 /* contact end */
 
+/* product start */
+.product {
+    padding: 7rem 3%;
+}
+
+.product .row .col h2 span {
+    color: var(--primary);
+}
+/* product end */
+
 /* page news start */
 /* latest news start */
 .wrap {
@@ -440,7 +484,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: black;
+    color: var(--color);
 }
 
 .wrap .content .other-news .teks h3 {
@@ -455,15 +499,100 @@ body {
 
 /* dashboard start */
 /* user start */
-.container {
-    padding-top: 7rem;
-}
-
 .container .row .col .table {
     --bs-table-bg: var(--background);
 }
 /* user end */
 /* dashboard end */
+
+/* register start */
+.container .form-container {
+    width: 25rem;
+}
+
+.container .form-container.login {
+    width: 22rem;
+}
+
+.container .form-container > a {
+    bottom: -.3rem;
+    position: relative;
+}
+
+.container .form-container > a:hover {
+    color: var(--primary);
+}
+
+.container .form-container form .form-group {
+    margin-block: 1rem;
+}
+
+.container .form-container form input {
+    background-color: var(--background);
+    color: var(--color);
+    border: none;
+    padding-block: .3rem;
+    padding-left: 2.5rem;
+    width: 100%;
+    border-bottom: 1px solid #b4b3b3;
+    border-radius: 0;
+    outline: none;
+}
+
+.container .form-container form input.is-invalid {
+    border-bottom: 1px solid #dc3545;
+}
+
+.container .form-container form input::placeholder {
+    color: #b4b3b3;
+}
+
+.container .form-container form input:focus {
+    outline: none !important;
+    box-shadow: none;
+    border-bottom: 1px solid var(--color);;
+}
+
+.container .form-container form input:focus::placeholder {
+    color: var(--color);
+}
+
+.container .form-container form .eye {
+    cursor: pointer;
+}
+
+.container .form-container form .eye:hover {
+    color: var(--primary);
+}
+
+.container .form-container form button.btn-primary {
+    --bs-btn-bg: var(--primary);
+    --bs-btn-hover-bg: var(--secondary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-hover-border-color: var(--secondary);
+    --bs-btn-active-bg: var(--secondary);
+    --bs-btn-active-border-color: var(--secondary);
+}
+
+.container .form-container > a:hover {
+    color: white !important;
+}
+/* register end */
+
+/* footer start */
+footer.footer {
+    background-color: var(--primary);
+    height: 10rem;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: relative;
+}
+
+footer .content .social-media a:hover, footer .content .navigate a:hover {
+    color: black;
+}
+/* footer end */
 
 /* media queries */
 @media (min-width: 1920) {

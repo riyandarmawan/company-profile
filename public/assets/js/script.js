@@ -13,16 +13,16 @@ document.addEventListener("click", (e) => {
 });
 
 // dropdown menu start
-const dropdownToggle = document.querySelector(".dropdown-toggle");
+const dropdownButton = document.querySelector(".dropdown-button");
 const dropdownMenu = document.querySelector(".dropdown-menu");
 
-dropdownToggle.onclick = () => {
+dropdownButton.onclick = () => {
     dropdownMenu.classList.toggle("show");
 };
 
 document.addEventListener("click", (e) => {
     if (
-        !dropdownToggle.contains(e.target) &&
+        !dropdownButton.contains(e.target) &&
         !dropdownMenu.contains(e.target)
     ) {
         dropdownMenu.classList.remove("show");
@@ -94,3 +94,5 @@ document.addEventListener("click", (e) => {
 
 // dashboard start
 // user start
+
+// register start

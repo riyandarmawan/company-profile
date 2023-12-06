@@ -11,9 +11,13 @@ class Contact extends BaseController
     {
         $contact = new ContactModel();
 
+        $currentPage = $this->request->getVar('page_contact') ? $this->request->getVar('page_contact') : 1;
+
         $data = [
             'title' => 'Pesan',
-            'contacts' => $contact->orderBy('id', 'DESC')->findAll()
+            'contacts' => $contact->orderBy('id', 'DESC')->paginate(7, 'contact'),
+            'pager' => $contact->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('/dashboard/contact/index', $data);
@@ -27,7 +31,7 @@ class Contact extends BaseController
             'nama' => [
                 'rules' => 'required|max_length[30]',
                 'errors' => [
-                    'required' => '{field} harus diisi!',
+                    'required' => '{fiweld} harus diisi!',
                     'max_length' => '{field} maksimal 30 karakter!'
                 ]
             ],

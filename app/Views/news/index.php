@@ -4,6 +4,7 @@
 
 <div class="wrap">
     <main class="content">
+        <h2 class="my-3">Berita Terbaru</h2>
         <div class="inner">
             <div class="news-control">
                 <span class="material-symbols-outlined" id="previous">
@@ -30,7 +31,8 @@
             </div>
         </div>
 
-        <?php foreach($news as $n) : ?>
+        <h2 class="mt-5">Berita lainnya</h2>
+        <?php foreach ($news as $n) : ?>
             <a href="#" class="other-news">
                 <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
                 <div class="teks">
