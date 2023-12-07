@@ -8,13 +8,13 @@ class Home extends BaseController
 {
     public function index()
     {
-        $data = [
-            'title' => 'MyCoffee'
-        ];
-
         $session = \Config\Services::session();
 
-        dd($session->get('user')['nama']);
+        $data = [
+            'title' => 'MyCoffee',
+            'member' => $session->get('member')
+        ];
+
 
         return view('home/index', $data);
     }

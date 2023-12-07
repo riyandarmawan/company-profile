@@ -10,7 +10,7 @@
             <?= csrf_field(); ?>
             <div class="form-group position-relative mb-2">
                 <label class="position-absolute" for="identify"><span class="material-symbols-outlined">person</span></label>
-                <input placeholder="Username, Telepon, atau Email" type="text" name="identify" id="identify" autocomplete="off" class="form-control <?= session()->getFlashdata('identify') ? 'is-invalid' : ''; ?>">
+                <input placeholder="Username, Telepon, atau Email" type="text" name="identify" id="identify" autocomplete="off" class="form-control <?= session()->getFlashdata('identify') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('identify') ? '' : old('identify'); ?>">
                 <div class="invalid-feedback">
                     <?= session()->getFlashdata('identify'); ?>
                 </div>

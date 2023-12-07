@@ -18,12 +18,8 @@ class Registration extends BaseController
 
     public function login(): string
     {
-        $session = \Config\Services::session();
-
         $data = [
-            'title' => 'Login',
-            'identify' => $session->get('identify'),
-            'password' => $session->get('password'),
+            'title' => 'Login'
         ];
 
         return view('registration/login', $data);
@@ -107,8 +103,12 @@ class Registration extends BaseController
 
         $username = strtolower($username);
 
+        $nama = $this->request->getVar('nama');
+
+        $nama = ucwords(strtolower($nama));
+
         $userModel->save([
-            'nama' => $this->request->getVar('nama'),
+            'nama' => $nama,
             'username' => $username,
             'telepon' => $this->request->getVar('telepon'),
             'email' => $this->request->getVar('email'),
@@ -118,7 +118,7 @@ class Registration extends BaseController
 
         $user = $userModel->where('username', $username)->first();
 
-        $session->set('user', $user);
+        $session->set('member', $user);
 
         return redirect()->to(base_url());
     }
@@ -133,8 +133,6 @@ class Registration extends BaseController
         $identify = $this->request->getVar('identify');
 
         $user = $userModel->where('username', $identify)->orWhere('telepon', $identify)->orWhere('email', $identify)->first();
-
-        $password = $this->request->getVar('password');
 
         if (!$this->validate([
             'identify' => [
@@ -161,17 +159,33 @@ class Registration extends BaseController
                 session()->setFlashdata('identify', 'pengguna tidak ditemukan');
             }
 
+            return redirect()->to(base_url() . 'registration/login')->withInput();
+        }
+
+        $password = $this->request->getVar('password');
+
+        if ($user) {
             if (!password_verify($password, $user['password'])) {
-                session()->setFlashdata('password', 'Password yang anda masukkan sakah');
+                session()->setFlashdata('password', 'Password yang anda masukkan salah');
+
+                return redirect()->to(base_url() . 'registration/login')->withInput();
             }
+        } else {
+            session()->setFlashdata('identify', 'pengguna tidak ditemukan');
 
             return redirect()->to(base_url() . 'registration/login')->withInput();
         }
 
-        if (password_verify($password, $user['password'])) {
-            $session->set('user', $user);
+        $session->set('member', $user);
 
-            return redirect()->to(base_url());
-        }
+        return redirect()->to(base_url());
+    }
+
+    public function logout() {
+        $session = \Config\Services::session();
+
+        $session->destroy();
+
+        return redirect()->to(base_url());
     }
 }

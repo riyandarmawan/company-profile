@@ -31,7 +31,9 @@
             </div>
         </div>
 
-        <h2 class="mt-5">Berita lainnya</h2>
+        <?php if ($news) : ?>
+            <h2 class="mt-5">Berita lainnya</h2>
+        <?php endif; ?>
         <?php foreach ($news as $n) : ?>
             <a href="#" class="other-news">
                 <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
@@ -44,4 +46,9 @@
     </main>
 </div>
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('js'); ?>
+<script src="/assets/js/news.js"></script>
+<script src="/assets/js/navigasi.js"></script>
 <?= $this->endSection(); ?>
