@@ -27,7 +27,7 @@
       <li class="nav-item dropdown pe-3">
 
         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="/assets/img/dashboard/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <img src="/assets/img/dashboard/user/<?= $session->get('member')['profile']; ?>" alt="Profile" class="rounded-circle">
           <!-- <span class="d-none d-md-block dropdown-toggle ps-2"></span> -->
         </a><!-- End Profile Iamge Icon -->
 
@@ -40,7 +40,7 @@
           </li>
 
           <li>
-            <a class="dropdown-item d-flex align-items-center" href="#">
+            <a class="dropdown-item d-flex align-items-center" href="<?= base_url() . 'dashboard/my-profile'; ?>">
               <span class="material-symbols-outlined me-2">person</span>
               <span>Profil Saya</span>
             </a>

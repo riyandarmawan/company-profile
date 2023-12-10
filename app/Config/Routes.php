@@ -11,6 +11,9 @@ $routes->get('/', 'Home::index');
 $routes->get('/news', 'News::index');
 
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->get('/dashboard/my-profile', 'Dashboard::myProfile');
+$routes->post('/dashboard/my-profile', 'Registration::update');
+$routes->post('/dashboard/my-profile/change-password', 'Registration::changePassword');
 
 $routes->get('/dashboard/user', 'User::index');
 

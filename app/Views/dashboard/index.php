@@ -2,6 +2,8 @@
 
 <?= $this->section('content'); ?>
 
-
+<main id="main">
+    
+</main>
 
 <?= $this->endSection(); ?>

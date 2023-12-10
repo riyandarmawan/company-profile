@@ -12,10 +12,22 @@ class Dashboard extends BaseController
         $session = \Config\Services::session();
 
         $data = [
-            'title' => 'dashboard',
-            'user' => $session->get('member')
+            'title' => 'Dashboard',
+            'member' => $session->get('member')
         ];
 
         return view('/dashboard/index', $data);
+   }
+
+   public function myProfile() 
+   {    
+        $session = \Config\Services::session();
+
+        $data = [
+            'title' => 'Profil Saya',
+            'member' => $session->get('member')
+        ];
+
+        return view('/dashboard/myProfile', $data);
    }
 }
