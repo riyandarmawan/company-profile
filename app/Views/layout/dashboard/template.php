@@ -25,6 +25,9 @@
     <!-- google icon -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+    <!-- feather icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <!-- Vendor CSS Files -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -33,6 +36,8 @@
     <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <?= $this->renderSection('css'); ?>
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/dashboard/style.css" rel="stylesheet">
@@ -55,6 +60,11 @@
     <?= $this->include('layout/dashboard/footer'); ?>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- feather icon -->
+    <script>
+        feather.replace();
+    </script>
 
     <!-- Vendor JS Files -->
     <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>

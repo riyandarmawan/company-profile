@@ -28,6 +28,6 @@ class Dashboard extends BaseController
             'member' => $session->get('member')
         ];
 
-        return view('/dashboard/myProfile', $data);
+        return view('/dashboard/my-profile', $data);
    }
 }

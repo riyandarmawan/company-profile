@@ -10,8 +10,8 @@
         <h1>Profile</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url() . 'dashboard'; ?>">Home</a></li>
-                <li class="breadcrumb-item">Users</li>
+                <li class="breadcrumb-item"><a href="<?= base_url() . 'dashboard'; ?>">Beranda</a></li>
+                <li class="breadcrumb-item">Pengguna</li>
                 <li class="breadcrumb-item active">Profile</li>
             </ol>
         </nav>
@@ -24,6 +24,7 @@
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                         <img src="/assets/img/dashboard/user/<?= $session->get('member')['profile']; ?>" alt="Profile" class="rounded-circle">
                         <h2><?= $member['nama']; ?></h2>
+                        <h3><?= $member['role']; ?></h3>
                     </div>
                 </div>
             </div>
@@ -137,27 +138,41 @@
                             </div>
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
+                                <?php if (session()->getFlashdata('berhasil')) : ?>
+                                    <div class="alert alert-success" role="alert">
+                                        <?= session()->getFlashdata('berhasil'); ?>
+                                    </div>
+                                <?php endif; ?>
                                 <!-- Change Password Form -->
                                 <form action="my-profile/change-password" method="post">
 
                                     <div class="row mb-3">
                                         <label for="oldPassword" class="col-md-4 col-lg-3 col-form-label">Password Lama</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input type="password" class="form-control" name="oldPassword" id="oldPassword">
+                                            <input type="password" class="form-control <?= session()->getFlashdata('oldPassword') ? 'is-invalid' : '' ?>" name="oldPassword" id="oldPassword">
+                                            <div class="invalid-feedback d-block">
+                                                <p class="text-center mb-0"><?= session()->getFlashdata('oldPassword'); ?></p>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Password Baru</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                            <input type="password" class="form-control <?= session()->getFlashdata('newPassword') ? 'is-invalid' : '' ?>" name="newPassword" id="newPassword">
+                                            <div class="invalid-feedback d-block">
+                                                <p class="text-center mb-0"><?= session()->getFlashdata('newPassword'); ?></p>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Konfirmasi Password Baru</label>
                                         <div class="col-md-7 col-lg-9">
-                                            <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                            <input type="password" class="form-control <?= session()->getFlashdata('renewPassword') ? 'is-invalid' : '' ?>" name="renewPassword" id="renewPassword">
+                                            <div class="invalid-feedback d-block">
+                                                <p class="text-center mb-0"><?= session()->getFlashdata('renewPassword'); ?></p>
+                                            </div>
                                         </div>
                                     </div>
 

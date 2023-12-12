@@ -74,37 +74,16 @@
                     <p><?= session()->getFlashdata('pesan'); ?></p>
                 <?php endif; ?>
                 <label for="nama">Nama</label>
-                <input type="text" name="nama" id="nama" autocomplete="off" class="disabled <?= (session()->getFlashdata('nama') ? 'is-invalid' : ''); ?>" value="<?= $member ? $member['nama'] : ''; ?>" disabled>
-                <?php if (session()->getFlashdata('nama')) : ?>
-                    <div>
-                        <span class="material-symbols-outlined">error</span>
-                        <p><?= session()->getFlashdata('nama'); ?></p>
-                    </div>
-                <?php endif; ?>
+                <input type="text" name="nama" id="nama" autocomplete="off" class="disabled" value="<?= $member ? $member['nama'] : ''; ?>" disabled>
                 <label for="telepon">No Telepon</label>
-                <input type="tel" name="telepon" id="telepon" autocomplete="off" class="disabled <?= (session()->getFlashdata('telepon') ? 'is-invalid' : ''); ?>" value="<?= $member ? $member['telepon'] : ''; ?>" disabled>
-                <?php if (session()->getFlashdata('telepon')) : ?>
-                    <div>
-                        <span class="material-symbols-outlined">error</span>
-                        <p><?= session()->getFlashdata('telepon'); ?></p>
-                    </div>
-                <?php endif; ?>
+                <input type="tel" name="telepon" id="telepon" autocomplete="off" class="disabled" value="<?= $member ? $member['telepon'] : ''; ?>" disabled>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" autocomplete="off" class="disabled <?= (session()->getFlashdata('email') ? 'is-invalid' : ''); ?>" value="<?= $member ? $member['email'] : ''; ?>" disabled>
-                <?php if (session()->getFlashdata('email')) : ?>
-                    <div>
-                        <span class="material-symbols-outlined">error</span>
-                        <p><?= session()->getFlashdata('email'); ?></p>
-                    </div>
-                <?php endif; ?>
+                <input type="email" name="email" id="email" autocomplete="off" class="disabled" value="<?= $member ? $member['email'] : ''; ?>" disabled>
                 <label for="pesan">Pesan</label>
-                <textarea rows="5" type="text" name="pesan" id="pesan" autocomplete="off" class="<?= (!$member ? 'disabled' : ''); (session()->getFlashdata('pesanGagal') ? 'is-invalid' : ''); ?>" value="<?= old('pesan'); ?>" <?= !$member ? 'disabled' : ''; ?>></textarea>
-                <?php if (session()->getFlashdata('pesanGagal')) : ?>
-                    <div>
-                        <span class="material-symbols-outlined">error</span>
-                        <p><?= session()->getFlashdata('pesanGagal'); ?></p>
-                    </div>
-                <?php endif; ?>
+                <textarea rows="5" type="text" name="pesan" id="pesan" autocomplete="off" class="form-control <?= (!$member ? 'disabled' : ''); ?> <?= session()->getFlashdata('pesanGagal') ? 'is-invalid' : ''; ?>" <?= !$member ? 'disabled' : ''; ?>></textarea>
+                <div class="invalid-feedback">
+                    <?= session()->getFlashdata('pesanGagal'); ?>
+                </div>
                 <button type="submit">Kirim</button>
             </form>
         </div>

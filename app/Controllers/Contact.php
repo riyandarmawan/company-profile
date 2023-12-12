@@ -9,48 +9,49 @@ class Contact extends BaseController
 {
     public function index(): string
     {
-        $contact = new ContactModel();
+        $contacts = new ContactModel();
+        $contacts = $contacts->join('user', 'contact.user_id = user.user_id');
 
-        $currentPage = $this->request->getVar('page_contact') ? $this->request->getVar('page_contact') : 1;
+        $currentPage = $this->request->getVar('page_users') ? $this->request->getVar('page_users') : 1;
+        $totalData = 7;
+        session()->setFlashdata('totalData', $totalData);
+
+        $keyword = $this->request->getVar('keyword');
+
+        if($keyword) {
+            $contacts = $contacts->like('user.nama', $keyword)->orLike('pesan', $keyword);
+        }
 
         $data = [
-            'title' => 'Pesan',
-            'contacts' => $contact->orderBy('id', 'DESC')->paginate(7, 'contact'),
-            'pager' => $contact->pager,
+            'title' => 'Kontak',
+            'contacts' => $contacts->paginate(7, 'contact'),
+            'pager' => $contacts->pager,
             'currentPage' => $currentPage
         ];
 
         return view('/dashboard/contact/index', $data);
     }
 
+    public function detail($contact_id): string
+    {
+        $contacts = new ContactModel();
+        $contacts = $contacts->join('user', 'contact.user_id = user.user_id');
+
+        $data = [
+            'title' => 'Kontak',
+            'contact' => $contacts->where('contact_id', $contact_id)->first(),
+        ];
+
+        return view('/dashboard/contact/detail', $data);
+    }
+
     public function save()
     {
+        $session = \Config\Services::session();
+
         $contact = new ContactModel();
 
         if (!$this->validate([
-            'nama' => [
-                'rules' => 'required|max_length[30]',
-                'errors' => [
-                    'required' => '{fiweld} harus diisi!',
-                    'max_length' => '{field} maksimal 30 karakter!'
-                ]
-            ],
-            'email' => [
-                'rules' => 'required|max_length[30]|valid_email',
-                'errors' => [
-                    'required' => '{field} harus diisi!',
-                    'max_length' => '{field} maksimal 30 karakter!',
-                    'valid_email' => 'yang anda masukkan bukan {field}'
-                ]
-            ],
-            'telepon' => [
-                'rules' => 'required|max_length[13]|numeric',
-                'errors' => [
-                    'required' => 'nomor {field} harus diisi!',
-                    'max_length' => '{field} maksimal 13 karakter!',
-                    'numeric' => 'yang anda isi bukan nomor {field}!'
-                ]
-            ],
             'pesan' => [
                 'rules' => 'required|max_length[1000]',
                 'errors' => [
@@ -61,18 +62,15 @@ class Contact extends BaseController
         ])) {
             $validation = \Config\Services::validation();
 
-            session()->setFlashdata('nama', $validation->getError('nama'));
-            session()->setFlashdata('email', $validation->getError('email'));
-            session()->setFlashdata('telepon', $validation->getError('telepon'));
             session()->setFlashdata('pesanGagal', $validation->getError('pesan'));
 
             return redirect()->to(base_url() . '#contact')->withInput();
         }
 
+        $userId = $session->get('member')['id'];
+
         $contact->save([
-            'nama' => $this->request->getVar('nama'),
-            'email' => $this->request->getVar('email'),
-            'telepon' => $this->request->getVar('telepon'),
+            'user_id' => $userId,
             'pesan' => $this->request->getVar('pesan')
         ]);
 

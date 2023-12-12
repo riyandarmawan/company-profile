@@ -16,14 +16,18 @@ $routes->post('/dashboard/my-profile', 'Registration::update');
 $routes->post('/dashboard/my-profile/change-password', 'Registration::changePassword');
 
 $routes->get('/dashboard/user', 'User::index');
+$routes->get('/dashboard/user/detail/(:segment)', 'User::detail/$1');
+$routes->post('/dashboard/user/detail/(:segment)', 'User::change/$1');
+$routes->get('/dashboard/user/remove/(:num)', 'User::remove/$1');
 
 $routes->post('/home/contactSave', 'Contact::save');
 $routes->get('/dashboard/contact', 'Contact::index');
+$routes->get('/dashboard/contact/detail/(:num)', 'Contact::detail/$1');
 
-$routes->get('/registration/register', 'registration::register');
-$routes->post('/registration/register', 'registration::save');
-$routes->get('/registration/login', 'registration::login');
-$routes->post('/registration/login', 'registration::take');
-$routes->post('/registration/logout', 'registration::logout');
+$routes->get('/registration/register', 'Registration::register');
+$routes->post('/registration/register', 'Registration::save');
+$routes->get('/registration/login', 'Registration::login');
+$routes->post('/registration/login', 'Registration::take');
+$routes->post('/registration/logout', 'Registration::logout');
 
 $routes->setAutoRoute(true);

@@ -389,63 +389,34 @@ class Registration extends BaseController
         ])) {
             $validation = \Config\Services::validation();
 
-            session()->setFlashdata('profile', $validation->getError('profile'));
-            session()->setFlashdata('nama', $validation->getError('nama'));
-            session()->setFlashdata('username', $validation->getError('username'));
-            session()->setFlashdata('telepon', $validation->getError('telepon'));
-            session()->setFlashdata('email', $validation->getError('email'));
+            session()->setFlashdata('oldPassword', $validation->getError('oldPassword'));
+            session()->setFlashdata('newPassword', $validation->getError('newPassword'));
+            session()->setFlashdata('renewPassword', $validation->getError('renewPassword'));
 
             return redirect()->to(base_url() . 'dashboard/my-profile')->withInput();
         }
 
-        // profile
-        $fileLama = $session->get('member')['profile'];
-        $profile = $this->request->getFile('profile');
-
-        if ($profile->getError() == 4) {
-            $namaProfile = $fileLama;
-        } else {
-            $namaProfile = $profile->getRandomName();
-
-            if ($fileLama != 'default.jpg') {
-                // hapus file lama
-                unlink('assets/img/dashboard/user/' . $fileLama);
-            }
-
-            $profile->move('assets/img/dashboard/user', $namaProfile);
-        }
-
-        // username
-        $username = $this->request->getVar('username');
-        $username = strtolower($username);
-
-        // nama
-        $nama = $this->request->getVar('nama');
-        $nama = ucwords(strtolower($nama));
-
         $oldData = $session->get('member');
 
-        $newData = [
-            'profile' => $namaProfile,
-            'nama' => $nama,
-            'username' => $username,
-            'telepon' => $this->request->getVar('telepon'),
-            'email' => $this->request->getVar('email'),
-        ];
-
-        $difference = array_diff_assoc($newData, $oldData);
-
-        if (empty($difference)) {
-            session()->setFlashdata('kosong', 'Tidak ada perubahan yang anda lakukan');
+        $oldPassword = $this->request->getVar('oldPassword');
+        $hash = $oldData['password'];
+        if(!password_verify($oldPassword, $hash)) {
+            session()->setFlashdata('oldPassword', 'Password yang anda masukkan salah');
 
             return redirect()->to(base_url() . 'dashboard/my-profile');
         }
 
+        $newPassword = password_hash($this->request->getVar('newPassword'), PASSWORD_DEFAULT);
+
+        $newData = [
+            'password' => $newPassword,
+        ];
+
         $userModel->update($oldData['id'], $newData);
 
-        $user = $userModel->where('username', $username)->first();
-
         session()->setFlashdata('berhasil', 'Perubahan berhasil dilakukan');
+
+        $user = $userModel->where('id', $oldData['id'])->first();
 
         $session->set('member', $user);
 

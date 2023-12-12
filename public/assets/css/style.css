@@ -217,6 +217,8 @@ body {
     font-size: 14px;
     padding: 10px 15px;
     transition: 0.3s;
+    --bs-dropdown-color: var(--bs-body-color);
+    --bs-dropdown-link-active-bg: #f6f9ff;
 }
 
 .header .registration .nav-item .nav-profile img {
@@ -369,15 +371,20 @@ body {
     margin-bottom: 0.5rem;
 }
 
+.form-control.is-invalid, .was-validated .form-control:invalid  {
+    border-color: var(--bs-form-invalid-border-color) !important;
+    background-position: center right .5rem !important;
+}
+
 .contact .content .wrapper form input.disabled,
 .contact .content .wrapper form textarea.disabled {
     background-color: #252525;
 }
 
-.contact .content .wrapper form input.is-invalid,
+/* .contact .content .wrapper form input.is-invalid,
 .contact .content .wrapper form textarea.is-invalid {
     border: 1px solid var(--error);
-}
+} */
 
 .contact .content .wrapper form input:hover,
 .contact .content .wrapper form textarea:hover {

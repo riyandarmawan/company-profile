@@ -20,6 +20,17 @@ body {
     color: #444444;
 }
 
+.contact-icon {
+    width: 1.1rem;
+    margin-right: 10px;
+    color: #899bbd;
+}
+
+.photo-profile-user {
+    width: 50px;
+    height: 50px;
+}
+
 .modal > * {
     color: black;
 }
