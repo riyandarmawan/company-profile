@@ -31,6 +31,15 @@ $session = \Config\Services::session(); ?>
           </a>
         </li>
       <?php endif; ?>
+
+      <?php if ($session->get('member')['role'] != 'pengunjung') : ?>
+        <li class="nav-item">
+          <a class="nav-link <?= $currentPage != 'news' ? 'collapsed' : ''; ?>" href="/dashboard/news">
+          <span class="material-symbols-outlined news-icon">newspaper</span>
+            <span>Berita</span>
+          </a>
+        </li>
+      <?php endif; ?>
     </div>
 
     <div class="group">

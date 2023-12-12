@@ -18,11 +18,14 @@ $routes->post('/dashboard/my-profile/change-password', 'Registration::changePass
 $routes->get('/dashboard/user', 'User::index');
 $routes->get('/dashboard/user/detail/(:segment)', 'User::detail/$1');
 $routes->post('/dashboard/user/detail/(:segment)', 'User::change/$1');
-$routes->get('/dashboard/user/remove/(:num)', 'User::remove/$1');
+$routes->get('/dashboard/user/detail/remove/(:num)', 'User::remove/$1');
 
 $routes->post('/home/contactSave', 'Contact::save');
 $routes->get('/dashboard/contact', 'Contact::index');
 $routes->get('/dashboard/contact/detail/(:num)', 'Contact::detail/$1');
+$routes->get('/dashboard/contact/detail/remove/(:num)', 'Contact::remove/$1');
+
+$routes->get('/dashboard/news', 'News::index');
 
 $routes->get('/registration/register', 'Registration::register');
 $routes->post('/registration/register', 'Registration::save');

@@ -12,43 +12,61 @@
 </section>
 <!-- home end -->
 
+<!-- about start -->
+<div class="container"  id="about">
+    <section class="about d-flex">
+        <div class="gambar flex-basis-25 d-flex align-items-center justify-content-center me-5">
+            <img src="/assets/img/about.jpg" alt="tentang" class="rounded-pill">
+        </div>
+        <div class="content flex-basis-50">
+            <h2 class="text-center">Tentang <span class="c-primary">Kami</span></h2>
+            <p class="text-indent-2rem fs-6 text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus consequuntur possimus laboriosam magnam velit blanditiis amet molestiae, nihil tempore nemo dolorum aut vel atque adipisci, sit impedit. Perspiciatis inventore quasi, eos praesentium beatae animi id tempora, reprehenderit accusantium deserunt voluptate fugiat, temporibus expedita necessitatibus tempore. Amet veritatis iste suscipit. Perspiciatis.</p>
+            <p class="text-indent-2rem fs-6 text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus consequuntur possimus laboriosam magnam velit blanditiis amet molestiae, nihil tempore nemo dolorum aut vel atque adipisci, sit impedit. Perspiciatis inventore quasi, eos praesentium beatae animi id tempora, reprehenderit accusantium deserunt voluptate fugiat, temporibus expedita necessitatibus tempore. Amet veritatis iste suscipit. Perspiciatis.</p>
+            <p class="text-indent-2rem fs-6 text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus consequuntur possimus laboriosam magnam velit blanditiis amet molestiae, nihil tempore nemo dolorum aut vel atque adipisci, sit impedit. Perspiciatis inventore quasi, eos praesentium beatae animi id tempora, reprehenderit accusantium deserunt voluptate fugiat, temporibus expedita necessitatibus tempore. Amet veritatis iste suscipit. Perspiciatis.</p>
+        </div>
+    </section>
+</div>
+<!-- about end -->
+
 <!-- product start -->
 <section class="product" id="product">
     <div class="row">
         <div class="col">
             <h2 class="text-center">Produk <span>Kami</span></h2>
-            <main class="content d-flex flex-wrap justify-content-center">
-                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                    <p class="mb-2 fs-7">IDR 13K</p>
-                </div>
-                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                    <p class="mb-2 fs-7">IDR 13K</p>
-                </div>
-                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                    <p class="mb-2 fs-7">IDR 13K</p>
-                </div>
-                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                    <p class="mb-2 fs-7">IDR 13K</p>
-                </div>
-                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                    <p class="mb-2 fs-7">IDR 13K</p>
-                </div>
-                <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                    <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                    <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                    <p class="mb-2 fs-7">IDR 13K</p>
-                </div>
-            </main>
+            <div class="row">
+                <main class="content d-flex flex-wrap justify-content-center">
+                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                        <p class="mb-2 fs-7">IDR 13K</p>
+                    </div>
+                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                        <p class="mb-2 fs-7">IDR 13K</p>
+                    </div>
+                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                        <p class="mb-2 fs-7">IDR 13K</p>
+                    </div>
+                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                        <p class="mb-2 fs-7">IDR 13K</p>
+                    </div>
+                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                        <p class="mb-2 fs-7">IDR 13K</p>
+                    </div>
+                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
+                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
+                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
+                        <p class="mb-2 fs-7">IDR 13K</p>
+                    </div>
+                </main>
+            </div>
         </div>
     </div>
 </section>

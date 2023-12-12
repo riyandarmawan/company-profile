@@ -20,6 +20,12 @@ body {
     color: #444444;
 }
 
+.news-icon {
+    font-size: 1.1rem;
+    margin-right: 10px;
+    color: #899bbd;
+}
+
 .contact-icon {
     width: 1.1rem;
     margin-right: 10px;

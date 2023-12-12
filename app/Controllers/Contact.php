@@ -78,4 +78,15 @@ class Contact extends BaseController
 
         return redirect()->to(base_url() . '#contact');
     }
+
+    public function remove($contact_id)
+    {
+        $contact = new ContactModel();
+
+        $contact->delete($contact_id);
+
+        session()->setFlashdata('removeContact', 'Pesan berhasil dihapus');
+
+        return redirect()->to(base_url() . 'dashboard/contact');
+    }
 }

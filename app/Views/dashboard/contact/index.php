@@ -9,6 +9,11 @@
 <?= $this->section('content'); ?>
 
 <main id="main">
+    <?php if (session()->getFlashdata('removeContact')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('removeContact'); ?>
+        </div>
+    <?php endif; ?>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -25,11 +30,10 @@
                     <tr class="alert" role="alert">
                         <td><?= $counter; ?></td>
                         <td><?= $contact['nama']; ?></td>
-                        <td><?= $contact['pesan']; ?></td>
+                        <td><?= strlen($contact['pesan']) > 100 ? substr($contact['pesan'], 0, 100) . '...' : substr($contact['pesan'], 0, 100); ?></td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<?= base_url() . 'dashboard/contact/detail/' . $contact['contact_id']; ?>" class="btn btn-success me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
-                                <a href="#" class="btn btn-danger me-2 d-flex align-items-center"><span class="material-symbols-outlined">delete</span></i></a>
+                                <a href="<?= base_url() . 'dashboard/contact/detail/' . $contact['contact_id']; ?>" class="me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
                             </div>
                         </td>
                     </tr>

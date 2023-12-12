@@ -45,18 +45,13 @@
                         <td>@<?= $user['username']; ?></td>
                         <td><?= $user['telepon']; ?></td>
                         <td><?= $user['role']; ?></td>
-                        <?php if ($member['role'] == 'admin') : ?>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <a href="<?= base_url() . 'dashboard/user/detail/' . $user['username']; ?>" class="btn btn-success me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
-                                    <a href="<?= base_url() . 'dashboard/user/remove/' . $user['id']; ?>" class="btn btn-danger d-flex align-items-center"><span class="material-symbols-outlined">delete</span></a>
-                                </div>
-                            </td>
-                        <?php endif; ?>
+                        <td>
+                            <a href="<?= base_url() . 'dashboard/user/detail/' . $user['username']; ?>" class="text-dark me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
+                        </td>
                     </tr>
-                    <?php
-                $counter++;
-            endforeach;; ?>
+                <?php
+                    $counter++;
+                endforeach;; ?>
             </tbody>
         </table>
     </div>

@@ -25,7 +25,9 @@
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                         <img src="/assets/img/dashboard/user/<?= $user['profile']; ?>" alt="Profile" class="rounded-circle">
                         <h2><?= $user['nama']; ?></h2>
-                        <h3><?= $user['role']; ?></h3>
+                        <?php if ($session->get('member')['role'] == 'admin') : ?>
+                            <h3><?= $user['role']; ?></h3>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -59,20 +61,28 @@
                                     <div class="col-lg-3 col-md-4 label">Email</div>
                                     <div class="col-lg-9 col-md-8"><?= $user['email']; ?></div>
                                 </div>
-                                <form action="" method="post">
-                                    <div class="row mb-3">
-                                        <label for="role" class="col-md-4 col-lg-3 col-form-label label">Role</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <select name="role" id="role" class="form-select" aria-label="Default select example">
-                                                <option value="pengunjung">Pengunjung</option>
-                                                <option value="petugas">Petugas</option>
-                                            </select>
+                                <?php if ($session->get('member')['role'] == 'petugas') : ?>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 label">Role</div>
+                                        <div class="col-lg-9 col-md-8"><?= $user['role']; ?></div>
+                                    </div>
+                                <?php elseif ($session->get('member')['role'] == 'admin') : ?>
+                                    <form action="" method="post">
+                                        <div class="row mb-3">
+                                            <label for="role" class="col-md-4 col-lg-3 col-form-label label">Role</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <select name="role" id="role" class="form-select" aria-label="Default select example">
+                                                    <option value="pengunjung">Pengunjung</option>
+                                                    <option value="petugas">Petugas</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    </div>
-                                </form>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                            <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalRemove">Hapus</a>
+                                        </div>
+                                    </form>
+                                <?php endif; ?>
                             </div>
 
                         </div><!-- End Bordered Tabs -->
@@ -85,5 +95,24 @@
     </section>
 
 </main><!-- End #main -->
+
+<!-- Modal -->
+<div class="modal fade" id="modalRemove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">My<span class="c-primary">Coffee</span></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin ingin menghapus user ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+        <a href="<?= base_url() . 'dashboard/user/detail/remove/' . $user['user_id']; ?>" class="btn btn-primary">Ya</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?= $this->endSection(); ?>

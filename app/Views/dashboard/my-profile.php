@@ -24,7 +24,6 @@
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                         <img src="/assets/img/dashboard/user/<?= $session->get('member')['profile']; ?>" alt="Profile" class="rounded-circle">
                         <h2><?= $member['nama']; ?></h2>
-                        <h3><?= $member['role']; ?></h3>
                     </div>
                 </div>
             </div>

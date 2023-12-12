@@ -16,6 +16,7 @@
             </span>
             <div class="dropdown-menu p-0">
                 <a href="#home">Beranda</a>
+                <a href="#about">Tentang Kami</a>
                 <a href="#product">Produk Kami</a>
                 <a href="#contact">Kontak Kami</a>
             </div>

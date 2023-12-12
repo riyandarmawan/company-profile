@@ -26,7 +26,7 @@ class User extends BaseController
         $data = [
             'title' => 'Pengguna',
             'member' => $session->get('member'),
-            'users' => $users->paginate($totalData, 'users'),
+            'users' => $users->where('role !=', 'admin')->paginate($totalData, 'users'),
             'pager' => $users->pager,
             'currentPage' => $currentPage
         ];
@@ -54,30 +54,28 @@ class User extends BaseController
 
         $user = $users->where('username', $username)->first();
 
-        $users->update($user['id'], [
+        $users->update($user['user_id'], [
             'role' => $this->request->getVar('role')
         ]);
 
         session()->setFlashdata('role', 'Role berhasil diubah');
 
-        $session->set('member', $user);
-
         return redirect()->to(base_url() . 'dashboard/user/detail/' . $username);
     }
 
-    public function remove($id)
+    public function remove($user_id)
     {   
         $session = \Config\Services::session();
 
         $users = new UserModel();
 
-        $user = $users->where('username', $id)->first();
+        if ($session->get('member')['user_id'] == $user_id) {
+            $session->destroy();
+        }
 
-        $users->delete($id);
+        $users->delete($user_id);
 
         session()->setFlashdata('remove', 'User berhasil dihapus');
-
-        $session->set('member', $user);
 
         return redirect()->to(base_url() . 'dashboard/user');
     }

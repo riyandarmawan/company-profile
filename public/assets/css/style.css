@@ -26,6 +26,18 @@ body {
 }
 
 /* bootstrap start */
+.text-indent-2rem {
+    text-indent: 2rem;
+}
+
+.flex-basis-25 {
+    flex-basis: 25%;
+}
+
+.flex-basis-60 {
+    flex-basis: 60%;
+}
+
 .container {
     padding-top: 7rem;
 }
@@ -814,6 +826,20 @@ footer .content .navigate a:hover {
     }
     /* other news end */
     /* news page end */
+
+    /* about start */
+    .about {
+        flex-wrap: wrap;
+    }
+
+    .about .gambar {
+        flex-basis: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .about .content {
+        flex-basis: 100%;
+    }
 }
 
 /* Mobile Phone */
