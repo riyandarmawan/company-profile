@@ -41,8 +41,11 @@
                                 <div class="alert alert-success" role="alert">
                                     <?= session()->getFlashdata('role'); ?>
                                 </div>
+                            <?php elseif (session()->getFlashdata('removeSelf')) : ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?= session()->getFlashdata('removeSelf'); ?>
+                                </div>
                             <?php endif; ?>
-
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <h5 class="card-title">Profil <?= $user['nama']; ?></h5>
                                 <div class="row">
@@ -61,13 +64,14 @@
                                     <div class="col-lg-3 col-md-4 label">Email</div>
                                     <div class="col-lg-9 col-md-8"><?= $user['email']; ?></div>
                                 </div>
-                                <?php if ($session->get('member')['role'] == 'petugas') : ?>
+                                <?php if ($session->get('member')['role'] == 'petugas' || $user['role'] == 'admin') : ?>
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Role</div>
                                         <div class="col-lg-9 col-md-8"><?= $user['role']; ?></div>
                                     </div>
                                 <?php elseif ($session->get('member')['role'] == 'admin') : ?>
                                     <form action="" method="post">
+                                        <?= csrf_field(); ?>
                                         <div class="row mb-3">
                                             <label for="role" class="col-md-4 col-lg-3 col-form-label label">Role</label>
                                             <div class="col-md-8 col-lg-9">
@@ -79,7 +83,11 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary">Save Changes</button>
-                                            <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalRemove">Hapus</a>
+                                            <?php if ($session->get('member')['user_id'] != $user['user_id']) : ?>
+                                                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalRemove">Hapus</a>
+                                            <?php else : ?>
+                                                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeSelf">Hapus</a>
+                                            <?php endif; ?>
                                         </div>
                                     </form>
                                 <?php endif; ?>
@@ -98,21 +106,38 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalRemove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">My<span class="c-primary">Coffee</span></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Apakah anda yakin ingin menghapus user ini?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-        <a href="<?= base_url() . 'dashboard/user/detail/remove/' . $user['user_id']; ?>" class="btn btn-primary">Ya</a>
-      </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">My<span class="c-primary">Coffee</span></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin ingin menghapus user ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                <a href="<?= base_url() . 'dashboard/user/detail/remove/' . $user['user_id']; ?>" class="btn btn-primary">Ya</a>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<div class="modal fade" id="removeSelf" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">My<span class="c-primary">Coffee</span></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Anda tidak bisa menghapus akun admin
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?= $this->endSection(); ?>

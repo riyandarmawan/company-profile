@@ -35,11 +35,11 @@
 
     <?= $this->renderSection('content'); ?>
 
-    <?= $this->include('layout/modal'); ?>
-
     <?php if ($currentPage != 'login' && $currentPage != 'register') : ?>
         <?= $this->include('layout/footer'); ?>
     <?php endif; ?>
+
+    <?= $this->include('layout/modal'); ?>
 
     <!-- feather icon -->
     <script>

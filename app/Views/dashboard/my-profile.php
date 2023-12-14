@@ -42,8 +42,16 @@
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Ubah Password</button>
                             </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#account-settings">Pengaturan Akun</button>
+                            </li>
                         </ul>
                         <div class="tab-content pt-2">
+                            <?php if (session()->getFlashdata('berhasil')) : ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?= session()->getFlashdata('berhasil'); ?>
+                                </div>
+                            <?php endif; ?>
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <h5 class="card-title">Profil Saya</h5>
@@ -70,13 +78,10 @@
                                     <div class="alert alert-danger" role="alert">
                                         <?= session()->getFlashdata('kosong'); ?>
                                     </div>
-                                <?php elseif (session()->getFlashdata('berhasil')) : ?>
-                                    <div class="alert alert-success" role="alert">
-                                        <?= session()->getFlashdata('berhasil'); ?>
-                                    </div>
                                 <?php endif; ?>
                                 <!-- Profile Edit Form -->
                                 <form action="" method="post" enctype="multipart/form-data">
+                                    <?= csrf_field(); ?>
                                     <div class="row mb-3">
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar Profil</label>
                                         <div class="col-md-8 col-lg-9">
@@ -96,7 +101,7 @@
                                     <div class="row mb-3">
                                         <label for="nama" class="col-md-4 col-lg-3 col-form-label">Nama</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input type="text" name="nama" id="nama" class="form-control <?= session()->getFlashdata('nama') ? 'is-invalid' : '' ?>" value="<?= $member['nama']; ?>">
+                                            <input type="text" name="nama" id="nama" class="form-control <?= session()->getFlashdata('nama') ? 'is-invalid' : '' ?>" value="<?= session()->getFlashdata('nama') ? $member['nama'] : old('nama', $member['nama']); ?>">
                                             <div class="invalid-feedback">
                                                 <?= session()->getFlashdata('nama'); ?>
                                             </div>
@@ -105,7 +110,7 @@
                                     <div class="row mb-3">
                                         <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input type="text" name="username" id="username" class="form-control <?= session()->getFlashdata('username') ? 'is-invalid' : '' ?>" value="<?= $member['username']; ?>">
+                                            <input type="text" name="username" id="username" class="form-control <?= session()->getFlashdata('username') ? 'is-invalid' : '' ?>" value="<?= session()->getFlashdata('username') ? $member['username'] : old('username', $member['username']); ?>">
                                             <div class="invalid-feedback">
                                                 <?= session()->getFlashdata('username'); ?>
                                             </div>
@@ -114,7 +119,7 @@
                                     <div class="row mb-3">
                                         <label for="telepon" class="col-md-4 col-lg-3 col-form-label">Telepon</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input type="tel" name="telepon" id="telepon" class="form-control <?= session()->getFlashdata('telepon') ? 'is-invalid' : '' ?>" value="<?= $member['telepon']; ?>">
+                                            <input type="tel" name="telepon" id="telepon" class="form-control <?= session()->getFlashdata('telepon') ? 'is-invalid' : '' ?>" value="<?= session()->getFlashdata('telepon') ? $member['telepon'] : old('telepon', $member['telepon']); ?>">
                                             <div class="invalid-feedback">
                                                 <?= session()->getFlashdata('telepon'); ?>
                                             </div>
@@ -123,7 +128,7 @@
                                     <div class="row mb-3">
                                         <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input type="email" name="email" id="email" class="form-control <?= session()->getFlashdata('email') ? 'is-invalid' : '' ?>" value="<?= $member['email']; ?>">
+                                            <input type="email" name="email" id="email" class="form-control <?= session()->getFlashdata('email') ? 'is-invalid' : '' ?>" value="<?= session()->getFlashdata('email') ? $member['email'] : old('email', $member['email']); ?>">
                                             <div class="invalid-feedback">
                                                 <?= session()->getFlashdata('email'); ?>
                                             </div>
@@ -144,7 +149,7 @@
                                 <?php endif; ?>
                                 <!-- Change Password Form -->
                                 <form action="my-profile/change-password" method="post">
-
+                                    <?= csrf_field(); ?>
                                     <div class="row mb-3">
                                         <label for="oldPassword" class="col-md-4 col-lg-3 col-form-label">Password Lama</label>
                                         <div class="col-md-8 col-lg-9">
@@ -180,18 +185,41 @@
                                     </div>
                                 </form><!-- End Change Password Form -->
 
-                            </div>
 
-                        </div><!-- End Bordered Tabs -->
+                                <div class="tab-pane fade pt-3" id="account-settings">
+                                    <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#removeAccount">Hapus akun ini</a>
+                                </div>
 
+                            </div><!-- End Bordered Tabs -->
+
+
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
-        </div>
     </section>
 
 </main><!-- End #main -->
+
+<!-- Modal -->
+<div class="modal fade" id="removeAccount" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">My<span class="c-primary">Coffee</span></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah anda yakin ingin menghapus akun ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                <a href="<?= base_url() . 'dashboard/my-profile/remove/' . $member['user_id']; ?>" class="btn btn-primary">Ya</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?= $this->endSection(); ?>
 

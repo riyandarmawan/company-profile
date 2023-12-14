@@ -1,3 +1,5 @@
+<?php $session = \Config\Services::session(); ?>
+
 <?= $this->extend('layout/dashboard/template'); ?>
 
 <?= $this->section('css'); ?>
@@ -9,31 +11,38 @@
 <?= $this->section('content'); ?>
 
 <main id="main">
-    <?php if (session()->getFlashdata('removeContact')) : ?>
+    <?php if (session()->getFlashdata('removeNews')) : ?>
         <div class="alert alert-success" role="alert">
-            <?= session()->getFlashdata('removeContact'); ?>
+            <?= session()->getFlashdata('removeNews'); ?>
         </div>
     <?php endif; ?>
     <div class="table-responsive">
+        <?php if ($session->get('member')['role'] == 'petugas') : ?>
+            <a href="<?= base_url() . 'dashboard/news/create'; ?>" class="btn btn-primary">Tambah berita</a>
+        <?php endif; ?>
         <table class="table">
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                    <th>Nama</th>
-                    <th>Pesan</th>
+                    <th>Gambar</th>
+                    <th>Penulis</th>
+                    <th>Judul</th>
+                    <th>Isi</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
                 <?php $counter = 1 + (session()->getFlashdata('totalData') * ($currentPage - 1));
-                foreach ($contacts as $contact) : ?>
+                foreach ($news as $news) : ?>
                     <tr class="alert" role="alert">
                         <td><?= $counter; ?></td>
-                        <td><?= $contact['nama']; ?></td>
-                        <td><?= strlen($contact['pesan']) > 100 ? substr($contact['pesan'], 0, 100) . '...' : substr($contact['pesan'], 0, 100); ?></td>
+                        <td><img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>" style="width: 100px; aspect-ratio: 45 / 28; object-fit: cover;" class="rounded"></td>
+                        <td><?= $news['nama']; ?></td>
+                        <td><?= $news['title']; ?></td>
+                        <td><?= strlen($news['content']) > 100 ? substr($news['content'], 0, 100) . '...' : substr($news['content'], 0, 100); ?></td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<?= base_url() . 'dashboard/contact/detail/' . $contact['contact_id']; ?>" class="me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
+                                <a href="<?= base_url() . 'dashboard/news/detail/' . $news['slug']; ?>" class="text-dark me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
                             </div>
                         </td>
                     </tr>
@@ -41,11 +50,11 @@
                 endforeach; ?>
             </tbody>
         </table>
-        <?php if (!$contacts) : ?>
-            <p class="text-center">Kontak tidak ada</p>
+        <?php if (!$news) : ?>
+            <p class="text-center">Berita tidak ada</p>
         <?php endif; ?>
     </div>
-    <?= $pager->links('contacts', 'custom_pagination'); ?>
+    <?= $pager->links('news', 'custom_pagination'); ?>
 </main>
 
 <?= $this->endSection(); ?>

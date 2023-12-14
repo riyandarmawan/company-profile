@@ -26,7 +26,7 @@ class User extends BaseController
         $data = [
             'title' => 'Pengguna',
             'member' => $session->get('member'),
-            'users' => $users->where('role !=', 'admin')->paginate($totalData, 'users'),
+            'users' => $users->paginate($totalData, 'users'),
             'pager' => $users->pager,
             'currentPage' => $currentPage
         ];
@@ -69,8 +69,16 @@ class User extends BaseController
 
         $users = new UserModel();
 
-        if ($session->get('member')['user_id'] == $user_id) {
-            $session->destroy();
+        $user = $users->where('user_id', $user_id)->first();
+
+        if ($session->get('member')['user_id'] == $user_id || $user['role'] == 'admin') {
+            session()->setFlashdata('removeSelf', 'Anda tidak bisa menghapus akun admin');
+
+            return redirect()->to(base_url() . 'dashboard/user/detail/' . $user['username']);
+        }
+
+        if($user['profile'] != 'default.jpg') {
+            unlink('assets/img/dashboard/user' . $user['profile']);
         }
 
         $users->delete($user_id);

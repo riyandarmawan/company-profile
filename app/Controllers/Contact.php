@@ -12,7 +12,7 @@ class Contact extends BaseController
         $contacts = new ContactModel();
         $contacts = $contacts->join('user', 'contact.user_id = user.user_id');
 
-        $currentPage = $this->request->getVar('page_users') ? $this->request->getVar('page_users') : 1;
+        $currentPage = $this->request->getVar('page_contacts') ? $this->request->getVar('page_contacts') : 1;
         $totalData = 7;
         session()->setFlashdata('totalData', $totalData);
 
@@ -24,7 +24,7 @@ class Contact extends BaseController
 
         $data = [
             'title' => 'Kontak',
-            'contacts' => $contacts->paginate(7, 'contact'),
+            'contacts' => $contacts->paginate(7, 'contacts'),
             'pager' => $contacts->pager,
             'currentPage' => $currentPage
         ];
@@ -67,7 +67,7 @@ class Contact extends BaseController
             return redirect()->to(base_url() . '#contact')->withInput();
         }
 
-        $userId = $session->get('member')['id'];
+        $userId = $session->get('member')['user_id'];
 
         $contact->save([
             'user_id' => $userId,

@@ -27,6 +27,7 @@ class Filters extends BaseConfig
         'secureheaders' => SecureHeaders::class,
         'login'         => \App\Filters\CheckLogin::class,
         'admin'         => \App\Filters\CheckAdmin::class,
+        'account'         => \App\Filters\CheckAccount::class,
     ];
 
     /**
@@ -71,6 +72,7 @@ class Filters extends BaseConfig
      */
     public array $filters = [
         'login' => ['before' => ['dashboard', 'dashboard/*']],
-        'admin' => ['before' => ['dashboard/user', 'dashboard/user/*', 'dashboard/contact', 'dashboard/contact/*']],
+        'admin' => ['before' => ['dashboard/user', 'dashboard/user/*', 'dashboard/contact', 'dashboard/contact/*', 'dashboard/news', 'dashboard/news/*']],
+        'account' => ['before' => ['registration', 'registration/login', 'registration/register']],
     ];
 }

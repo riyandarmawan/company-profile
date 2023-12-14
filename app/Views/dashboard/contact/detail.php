@@ -54,10 +54,12 @@
                                 </div>
                                 <h5 class="card-title">Pesan</h5>
                                 <p class="small fst-italic"><?= $contact['pesan']; ?></p>
+                                <?php if($session->get('member')['role'] == 'petugas'): ?>
                                 <div class="text-center">
                                     <a href="#" class="btn btn-success">Balas</a>
                                     <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalRemove">Hapus</a>
                                 </div>
+                                <?php endif; ?>
                             </div>
 
                         </div><!-- End Bordered Tabs -->

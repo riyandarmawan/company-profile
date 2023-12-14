@@ -20,6 +20,14 @@ body {
     color: #444444;
 }
 
+.text-indent-2rem {
+    text-indent: 2rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .news-icon {
     font-size: 1.1rem;
     margin-right: 10px;
@@ -1041,7 +1049,7 @@ h6 {
 /*--------------------------------------------------------------
 # Profie Page
 --------------------------------------------------------------*/
-.profile .profile-card img {
+.profile .profile-card img.rounded-circle {
     width: 120px;
     height: 120px;
 }
@@ -1087,6 +1095,12 @@ h6 {
 .profile .profile-edit label {
     font-weight: 600;
     color: rgba(1, 41, 112, 0.6);
+}
+
+
+#image-label.is-invalid {
+    border: 1px solid var(--bs-form-invalid-color) !important;
+    color: var(--bs-form-invalid-color) !important;
 }
 
 .profile .profile-edit img {

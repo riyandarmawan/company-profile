@@ -140,7 +140,7 @@ class Registration extends BaseController
 
         $session->set('member', $user);
 
-        return redirect()->to(base_url());
+        return redirect()->back();
     }
 
 
@@ -198,13 +198,14 @@ class Registration extends BaseController
 
         $session->set('member', $user);
 
-        return redirect()->to(base_url());
+        return redirect()->back();
     }
 
     public function logout()
     {
         $session = \Config\Services::session();
 
+        session_unset();
         $session->destroy();
 
         return redirect()->to(base_url());
@@ -343,7 +344,7 @@ class Registration extends BaseController
             return redirect()->to(base_url() . 'dashboard/my-profile');
         }
 
-        $userModel->update($oldData['id'], $newData);
+        $userModel->update($oldData['user_id'], $newData);
 
         $user = $userModel->where('username', $username)->first();
 
@@ -400,7 +401,7 @@ class Registration extends BaseController
 
         $oldPassword = $this->request->getVar('oldPassword');
         $hash = $oldData['password'];
-        if(!password_verify($oldPassword, $hash)) {
+        if (!password_verify($oldPassword, $hash)) {
             session()->setFlashdata('oldPassword', 'Password yang anda masukkan salah');
 
             return redirect()->to(base_url() . 'dashboard/my-profile');
@@ -421,5 +422,24 @@ class Registration extends BaseController
         $session->set('member', $user);
 
         return redirect()->to(base_url() . 'dashboard/my-profile');
+    }
+
+    public function remove($user_id)
+    {
+        $session = \Config\Services::session();
+
+        $users = new UserModel();
+
+        $user = $users->where('user_id', $user_id)->first();
+
+        if ($user['profile'] != 'default.jpg') {
+            unlink('assets/img/dashboard/user' . $user['profile']);
+        }
+
+        $users->delete($user_id);
+
+        $session->destroy();
+
+        return redirect()->to(base_url() . 'registration/register');
     }
 }

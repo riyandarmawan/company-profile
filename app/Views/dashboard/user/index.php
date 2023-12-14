@@ -54,6 +54,9 @@
                 endforeach;; ?>
             </tbody>
         </table>
+        <?php if (!$users) : ?>
+            <p class="text-center">Pengguna tidak ada</p>
+        <?php endif; ?>
     </div>
     <?= $pager->links('users', 'custom_pagination'); ?>
 </main>
