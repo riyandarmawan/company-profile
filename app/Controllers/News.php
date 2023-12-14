@@ -10,16 +10,18 @@ class News extends BaseController
     public function index(): string
     {
         $news = new NewsModel();
+        $news = $news->join('user', 'news.user_id = user.user_id');
 
-        $currentPage = $this->request->getVar('page_news') ? $this->request->getVar('page_news') : 1;
-        $totalData = 1;
-        $offset = ($currentPage - 1) * $totalData + 3;
+        $keyword = $this->request->getVar('keyword');
+
+        if($keyword) {
+            $news = $news->like('user.nama', $keyword)->orLike('title', $keyword)->orLike('content', $keyword);
+        }
 
         $data = [
             'title' => 'Berita',
-            'allNews' => $news->orderBy('news_id', 'DESC')->paginate($totalData, 'news'),
-            'pager' => $news->pager,
-            'currentPage' => $currentPage
+            'latestNews' => $news->orderBy('news_id', 'DESC')->limit(3)->find(),
+            'news' => $news->orderBy('news_id', 'DESC')->offset(3)->limit(PHP_INT_MAX)->find(),
         ];
 
         return view('news/index', $data);
@@ -199,7 +201,7 @@ class News extends BaseController
             session()->setFlashdata('image', $validation->getError('image'));
             session()->setFlashdata('deskripsi-gambar', $validation->getError('deskripsi-gambar'));
             session()->setFlashdata('content', $validation->getError('content'));
-            
+
             return redirect()->back()->withInput();
         }
 
@@ -232,7 +234,8 @@ class News extends BaseController
         return redirect()->to(base_url() . 'dashboard/news/detail/' . $news['slug']);
     }
 
-    public function delete($newsId) {
+    public function delete($newsId)
+    {
         $session = \Config\Services::session();
 
         $news = new NewsModel();
@@ -246,5 +249,22 @@ class News extends BaseController
         session()->setFlashdata('removeNews', 'Berita berhasil dihapus');
 
         return redirect()->to(base_url() . 'dashboard/news');
+    }
+
+    public function read($slug)
+    {
+        $session = \Config\Services::session();
+
+        $news = new NewsModel();
+        $news = $news->join('user', 'news.user_id = user.user_id');
+        $news = $news->where('slug', $slug)->first();
+
+        $data = [
+            'title' => $news['title'],
+            'news' => $news,
+            'paragraphs' => $paragraphs = preg_split('/.\n./', $news['content'])
+        ];
+
+        return view('news/read', $data);
     }
 }

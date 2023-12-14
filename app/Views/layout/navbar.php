@@ -24,7 +24,13 @@
         <a href="/news">Berita</a>
     </nav>
 
-    <div class="registration">
+    <div class="registration d-flex align-items-center">
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="get" action="">
+                <input type="text" name="keyword" placeholder="Search" title="Enter search keyword">
+                <button type="submit" title="Search"><i data-feather="search"></i></i></button>
+            </form>
+        </div>
         <?php if ($session->get('member')) : ?>
             <li class="nav-item dropdown pe-3">
 

@@ -11,6 +11,7 @@ $routes->get('/', 'Home::index');
 
 // news
 $routes->get('/news', 'News::index');
+$routes->get('/news/(:segment)', 'News::read/$1');
 $routes->get('/dashboard/news', 'News::table');
 $routes->get('/dashboard/news/create', 'News::create');
 $routes->post('/dashboard/news/create', 'News::save');

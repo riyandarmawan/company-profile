@@ -23,8 +23,6 @@
                         <li class="active" id="indicator-news-<?= $counter; ?>"></li>
                     <?php $counter++;
                     endforeach; ?>
-                    <!-- <li id="indicator-news-2"></li>
-                <li id="indicator-news-3"></li> -->
                 </ul>
                 <div class="flow page-1 <?= (count($latestNews) == 3) ? 'flow-300' : ((count($latestNews) == 2) ? 'flow-200' : ''); ?>">
                     <?php foreach ($latestNews as $ln) : ?>
@@ -51,36 +49,12 @@
                 </div>
             </a>
         <?php endforeach; ?>
-        <?= $pager->links('news', 'custom_pagination'); ?>
-
 
         <?php if (!$latestNews && !$news) : ?>
             <p class="text-center">Berita tidak tersedia</p>
         <?php endif; ?>
     </main>
 </div>
-
-<?php $i = 0; ?>
-<?php foreach ($allNews as $n) : ?>
-    <?php if ($i < 3) : ?>
-        <a href="<?= base_url() . 'news/' . $n['slug']; ?>" class="latest-news">
-            <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
-            <div class="title">
-                <h3><?= $n['title']; ?></h3>
-            </div>
-        </a>
-    <?php else : ?>
-        <a href="<?= base_url() . 'news/' . $n['slug']; ?>" class="other-news">
-            <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
-            <div class="teks">
-                <h3><?= $n['title']; ?></h3>
-                <p><?= word_limiter($n['content'], 20); ?></p>
-            </div>
-        </a>
-    <?php endif; ?>
-    <?php $i++; ?>
-<?php endforeach; ?>
-
 
 <?= $this->endSection(); ?>
 
