@@ -33,14 +33,7 @@
                 foreach ($users as $user) : ?>
                     <tr class="alert" role="alert">
                         <td><?= $counter; ?></td>
-                        <td class="<?= $user['profile'] ? 'd-flex align-items-center' : '' ?>">
-                            <?php if ($user['profile']) : ?>
-                                <div class="img" style="background-image: url(/assets/img/dashboard/user/<?= $user['profile'] ?>);"></div>
-                            <?php endif; ?>
-                            <div class="<?= $user['profile'] ? 'pl-3' : '' ?> email">
-                                <span><?= $user['email']; ?></span>
-                            </div>
-                        </td>
+                        <td><span><?= $user['email']; ?></span></td>
                         <td><?= $user['nama']; ?></td>
                         <td>@<?= $user['username']; ?></td>
                         <td><?= $user['telepon']; ?></td>

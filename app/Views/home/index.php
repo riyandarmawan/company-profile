@@ -13,7 +13,7 @@
 <!-- home end -->
 
 <!-- about start -->
-<div class="container"  id="about">
+<div class="container" id="about">
     <section class="about d-flex">
         <div class="gambar flex-basis-25 d-flex align-items-center justify-content-center me-5">
             <img src="/assets/img/about.jpg" alt="tentang" class="rounded-pill">
@@ -32,19 +32,9 @@
 <section class="product" id="product">
     <div class="row">
         <div class="col">
-            <h2 class="text-center">Produk <span>Kami</span></h2>
+            <h2 class="text-center">Menu <span>Kami</span></h2>
             <div class="row">
-                <main class="content d-flex flex-wrap justify-content-center">
-                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                        <p class="mb-2 fs-7">IDR 13K</p>
-                    </div>
-                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                        <p class="mb-2 fs-7">IDR 13K</p>
-                    </div>
+                <main class="content w-100" style="display: grid; grid-template-columns: auto auto auto;">
                     <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
                         <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
                         <h3 class="mb-2 fs-5">- Cappucino -</h3>
@@ -67,10 +57,34 @@
                     </div>
                 </main>
             </div>
+            <a href="<?= base_url() . 'news'; ?>" class="c-primary fs-5 my-5 text-center w-100 d-inline-block"><< Muat Lebih >></a>
         </div>
     </div>
 </section>
 <!-- product end -->
+
+<!-- news start -->
+<section class="news" id="news">
+    <main class="content">
+        <h2>Berita</h2>
+        <div class="news-content">
+            <?php foreach ($news as $n) : ?>
+                <div class="news-recomendation">
+                    <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
+                    <div class="news-text">
+                        <h3><?= $n['title']; ?></h3>
+                        <p><?= substr($n['content'], 0, 80); ?>...</p>
+                        <a href="<?= base_url() . 'news/' . $n['slug']; ?>">Baca lebih lanjut...</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <a href="<?= base_url() . 'news'; ?>" class="c-primary fs-5 m-5">
+            << Muat Lebih>>
+        </a>
+    </main>
+</section>
+<!-- news end -->
 
 <!-- contact start -->
 <section class="contact" id="contact">

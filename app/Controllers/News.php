@@ -14,14 +14,14 @@ class News extends BaseController
 
         $keyword = $this->request->getVar('keyword');
 
-        if($keyword) {
-            $news = $news->like('user.nama', $keyword)->orLike('title', $keyword)->orLike('content', $keyword);
+        if ($keyword) {
+            $news = $news->like('title', $keyword)->orLike('content', $keyword)->orLike('user.nama', $keyword);
         }
 
         $data = [
             'title' => 'Berita',
-            'latestNews' => $news->orderBy('news_id', 'DESC')->limit(3)->find(),
-            'news' => $news->orderBy('news_id', 'DESC')->offset(3)->limit(PHP_INT_MAX)->find(),
+            'allNews' => $news->orderBy('news_id', 'DESC')->paginate(10, 'news'),
+            'pager' => $news->pager,
         ];
 
         return view('news/index', $data);

@@ -8,29 +8,15 @@
         <a href="">My<span>Coffee</span></a>
     </div>
 
-    <nav class="navigation">
-        <div class="dropdown">
-            <a href="/">Beranda</a>
-            <span class="material-symbols-outlined dropdown-button">
-                expand_more
-            </span>
-            <div class="dropdown-menu p-0">
-                <a href="#home">Beranda</a>
-                <a href="#about">Tentang Kami</a>
-                <a href="#product">Produk Kami</a>
-                <a href="#contact">Kontak Kami</a>
-            </div>
-        </div>
-        <a href="/news">Berita</a>
+    <nav class="navigation" style="display: flex; gap: 1rem;">
+        <a href="#home">Beranda</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#product">Produk Kami</a>
+        <a href="#news">Berita</a>
+        <a href="#contact">Kontak Kami</a>
     </nav>
 
     <div class="registration d-flex align-items-center">
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="get" action="">
-                <input type="text" name="keyword" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i data-feather="search"></i></i></button>
-            </form>
-        </div>
         <?php if ($session->get('member')) : ?>
             <li class="nav-item dropdown pe-3">
 

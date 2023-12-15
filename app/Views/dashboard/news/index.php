@@ -24,7 +24,6 @@
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                    <th>Gambar</th>
                     <th>Penulis</th>
                     <th>Judul</th>
                     <th>Isi</th>
@@ -36,7 +35,6 @@
                 foreach ($news as $news) : ?>
                     <tr class="alert" role="alert">
                         <td><?= $counter; ?></td>
-                        <td><img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>" style="width: 100px; aspect-ratio: 45 / 28; object-fit: cover;" class="rounded"></td>
                         <td><?= $news['nama']; ?></td>
                         <td><?= $news['title']; ?></td>
                         <td><?= strlen($news['content']) > 100 ? substr($news['content'], 0, 100) . '...' : substr($news['content'], 0, 100); ?></td>

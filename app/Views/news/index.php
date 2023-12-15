@@ -2,57 +2,35 @@
 
 <?= $this->section('content'); ?>
 
-<div class="wrap">
+<div class="news" id="news">
     <main class="content">
-        <?php if ($latestNews) : ?>
-            <h2 class="my-3">Berita Terbaru</h2>
-            <div class="inner mb-5">
-                <?php if (count($latestNews) > 1) : ?>
-                    <div class="news-control">
-                        <span class="material-symbols-outlined" id="previous">
-                            chevron_left
-                        </span>
-                        <span class="material-symbols-outlined" id="next">
-                            chevron_right
-                        </span>
+        <div class="group d-flex w-100 justify-content-between m-4 align-items-center">
+            <nav aria-label="breadcrumb" style="height: 1rem; line-height: 1rem;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= base_url(); ?>">Beranda</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Berita</li>
+                </ol>
+            </nav>
+            <div class="search-bar">
+                <form class="search-form d-flex align-items-center" method="get" action="">
+                    <input type="text" name="keyword" placeholder="Search" title="Enter search keyword">
+                    <button type="submit" title="Search"><i data-feather="search"></i></button>
+                </form>
+            </div><!-- End Search Bar -->
+        </div>
+        <div class="news-content mb-5">
+            <?php foreach ($allNews as $news) : ?>
+                <div class="news-recomendation">
+                    <img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>">
+                    <div class="news-text">
+                        <h3><?= $news['title']; ?></h3>
+                        <p><?= substr($news['content'], 0, 80); ?>...</p>
+                        <a href="<?= base_url() . 'news/' . $news['slug']; ?>">Baca lebih lanjut...</a>
                     </div>
-                <?php endif; ?>
-                <ul class="indicator-news">
-                    <?php $counter = 1;
-                    foreach ($latestNews as $ln) : ?>
-                        <li class="active" id="indicator-news-<?= $counter; ?>"></li>
-                    <?php $counter++;
-                    endforeach; ?>
-                </ul>
-                <div class="flow page-1 <?= (count($latestNews) == 3) ? 'flow-300' : ((count($latestNews) == 2) ? 'flow-200' : ''); ?>">
-                    <?php foreach ($latestNews as $ln) : ?>
-                        <a href="<?= base_url() . 'news/' . $ln['slug']; ?>" class="latest-news">
-                            <img src=" /assets/img/news/<?= $ln['image']; ?>" alt="<?= $ln['alt']; ?>">
-                            <div class="title">
-                                <h3><?= $ln['title']; ?></h3>
-                            </div>
-                        </a>
-                    <?php endforeach; ?>
                 </div>
-            </div>
-        <?php endif; ?>
-
-        <?php if ($news) : ?>
-            <h2 class="mt-5">Berita lainnya</h2>
-        <?php endif; ?>
-        <?php foreach ($news as $n) : ?>
-            <a href="<?= base_url() . 'news/' . $n['slug']; ?>" class="other-news">
-                <img src="/assets/img/news/<?= $n['image']; ?>" alt="<?= $n['alt']; ?>">
-                <div class="teks">
-                    <h3><?= $n['title']; ?></h3>
-                    <p><?= word_limiter($n['content'], 20); ?></p>
-                </div>
-            </a>
-        <?php endforeach; ?>
-
-        <?php if (!$latestNews && !$news) : ?>
-            <p class="text-center">Berita tidak tersedia</p>
-        <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+        <?= $pager->links('news', 'custom_pagination'); ?>
     </main>
 </div>
 

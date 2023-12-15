@@ -2,16 +2,22 @@
 
 <?php $this->section('content'); ?>
 
-<div class="container d-flex flex-column align-items-center news-read" style="padding-inline: 15%;">
-    <h2 class="text-center my-2"><?= $news['title']; ?></h2>
-    <img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover;" class="rounded my-2">
-    <div class="about w-100 d-flex justify-content-between">
-        <p>Penulis : <?= $news['nama']; ?></p>
-        <p>Gambar : <?= $news['alt']; ?></p>
-    </div>
-    <?php foreach($paragraphs as $paragraph): ?>
-        <p class="text-justify fs-5 my-2"><?= $paragraph; ?></p>
+
+<div class="container d-flex flex-column news-read" style="padding-inline: 15%;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url(); ?>">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url() . 'news'; ?>">Berita</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $news['title']; ?></li>
+        </ol>
+    </nav>
+    <img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover; object-position: center;" class="rounded my-2">
+    <p style="font-weight: 100; color: gray;">Ilustrasi : <?= $news['alt']; ?></p>
+    <h2 class="my-2 fs-1 fw-medium"><?= $news['title']; ?></h2>
+    <?php foreach ($paragraphs as $paragraph) : ?>
+        <p class="text-justify fs-5 my-2 fw-normal"><?= $paragraph; ?></p>
     <?php endforeach; ?>
+    <p style="font-weight: 100; color: gray;">Penulis : <?= $news['nama']; ?></p>
 </div>
 
 <?php $this->endSection(); ?>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\HTTP\Header;
+use App\Models\NewsModel;
 
 class Home extends BaseController
 {
@@ -10,9 +11,13 @@ class Home extends BaseController
     {
         $session = \Config\Services::session();
 
+        $news = new NewsModel();
+        $news = $news->join('user', 'news.user_id = user.user_id');
+
         $data = [
             'title' => 'MyCoffee',
-            'member' => $session->get('member')
+            'member' => $session->get('member'),
+            'news' => $news->orderBy('news_id', 'DESC')->limit(4)->find()
         ];
 
 
