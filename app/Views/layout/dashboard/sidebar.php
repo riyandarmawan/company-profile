@@ -40,6 +40,15 @@ $session = \Config\Services::session(); ?>
           </a>
         </li>
       <?php endif; ?>
+
+      <?php if ($session->get('member')['role'] != 'pengunjung') : ?>
+        <li class="nav-item">
+          <a class="nav-link <?= $currentPage != 'menu' ? 'collapsed' : ''; ?>" href="/dashboard/menu">
+          <span class="material-symbols-outlined news-icon">coffee_maker</span>
+            <span>Menu</span>
+          </a>
+        </li>
+      <?php endif; ?>
     </div>
 
     <div class="group">

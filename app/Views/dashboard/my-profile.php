@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
-                                <?php if (session()->getFlashdata('berhasil')) : ?>
+                                <?php if (session()->getFlashdata('passwordBerhasil')) : ?>
                                     <div class="alert alert-success" role="alert">
                                         <?= session()->getFlashdata('berhasil'); ?>
                                     </div>
@@ -184,14 +184,11 @@
                                         <button type="submit" class="btn btn-primary">Ubah Password</button>
                                     </div>
                                 </form><!-- End Change Password Form -->
-
-
-                                <div class="tab-pane fade pt-3" id="account-settings">
-                                    <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#removeAccount">Hapus akun ini</a>
-                                </div>
-
                             </div><!-- End Bordered Tabs -->
 
+                            <div class="tab-pane fade pt-3" id="account-settings">
+                                <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#removeAccount">Hapus akun ini</a>
+                            </div>
 
                         </div>
                     </div>

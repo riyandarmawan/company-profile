@@ -415,7 +415,7 @@ class Registration extends BaseController
 
         $userModel->update($oldData['id'], $newData);
 
-        session()->setFlashdata('berhasil', 'Perubahan berhasil dilakukan');
+        session()->setFlashdata('passwordBerhasil', 'Perubahan berhasil dilakukan');
 
         $user = $userModel->where('id', $oldData['id'])->first();
 

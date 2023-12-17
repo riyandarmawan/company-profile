@@ -24,7 +24,7 @@
                     <img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>">
                     <div class="news-text">
                         <h3><?= $news['title']; ?></h3>
-                        <p><?= substr($news['content'], 0, 80); ?>...</p>
+                        <p><?= $news['content']; ?></p>
                         <a href="<?= base_url() . 'news/' . $news['slug']; ?>">Baca lebih lanjut...</a>
                     </div>
                 </div>

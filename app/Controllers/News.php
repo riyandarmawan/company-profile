@@ -20,7 +20,7 @@ class News extends BaseController
 
         $data = [
             'title' => 'Berita',
-            'allNews' => $news->orderBy('news_id', 'DESC')->paginate(10, 'news'),
+            'allNews' => $news->orderBy('news_id', 'DESC')->paginate(12, 'news'),
             'pager' => $news->pager,
         ];
 

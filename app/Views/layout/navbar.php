@@ -9,11 +9,9 @@
     </div>
 
     <nav class="navigation" style="display: flex; gap: 1rem;">
-        <a href="#home">Beranda</a>
-        <a href="#about">Tentang Kami</a>
-        <a href="#product">Produk Kami</a>
-        <a href="#news">Berita</a>
-        <a href="#contact">Kontak Kami</a>
+        <a href="<?= base_url(); ?>">Beranda</a>
+        <a href="<?= base_url() . 'menu'; ?>">Menu</a>
+        <a href="<?= base_url() . 'news'; ?>">Berita</a>
     </nav>
 
     <div class="registration d-flex align-items-center">
