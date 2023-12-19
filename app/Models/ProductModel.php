@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MenuModel extends Model
+class PeoductModel extends Model
 {
-    protected $table      = 'menu';
-    protected $primaryKey = 'menu_id';
+    protected $table      = 'product';
+    protected $primaryKey = 'product_id';
 
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['gambar_menu', 'nama_menu', 'harga_menu'];
+    protected $allowedFields = ['gambar_product', 'nama_product', 'harga_product'];
 
     // Dates
     protected $useTimestamps = true;

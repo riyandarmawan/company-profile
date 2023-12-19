@@ -21,7 +21,7 @@
         <div class="news-content mb-5">
             <?php foreach ($allNews as $news) : ?>
                 <div class="news-recomendation">
-                    <img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>">
+                    <img src="/assets/img/news/<?= $news['image']; ?>" alt="Berita">
                     <div class="news-text">
                         <h3><?= $news['title']; ?></h3>
                         <p><?= $news['content']; ?></p>

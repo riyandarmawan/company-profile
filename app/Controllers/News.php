@@ -33,7 +33,7 @@ class News extends BaseController
         $news = $news->join('user', 'news.user_id = user.user_id');
 
         $currentPage = $this->request->getVar('page_news') ? $this->request->getVar('page_news') : 1;
-        $totalData = 7;
+        $totalData = 5;
         session()->setFlashdata('totalData', $totalData);
 
         $keyword = $this->request->getVar('keyword');
@@ -88,13 +88,6 @@ class News extends BaseController
                     'mime_in' => 'Gambar hanya boleh PNG, JPG, dan JPEG'
                 ]
             ],
-            'deskripsi-gambar' => [
-                'rules' => 'required|max_length[35]',
-                'errors' => [
-                    'required' => 'Deskripsi gambar harus diisi',
-                    'max_length' => 'Deskripsi gambar maksimal 35 Karakter'
-                ]
-            ],
             'content' => [
                 'rules' => 'required',
                 'errors' => [
@@ -106,13 +99,12 @@ class News extends BaseController
 
             session()->setFlashdata('judul', $validation->getError('judul'));
             session()->setFlashdata('image', $validation->getError('image'));
-            session()->setFlashdata('deskripsi-gambar', $validation->getError('deskripsi-gambar'));
             session()->setFlashdata('content', $validation->getError('content'));
 
             return redirect()->back()->withInput();
         }
 
-        $slug = url_title($this->request->getVar('judul'), '-', true) . '-' . rand();
+        $slug = url_title($this->request->getVar('judul'), '-', true) .  '-' . date('omdHis', time());
 
         $image = $this->request->getFile('image');
         if ($image->getError() == 4) {
@@ -128,7 +120,6 @@ class News extends BaseController
         $news->save([
             'user_id' => $session->get('member')['user_id'],
             'image' => $imageName,
-            'alt' => $this->request->getVar('deskripsi-gambar'),
             'title' => $judul,
             'slug' => $slug,
             'content' => $this->request->getVar('content'),
@@ -181,13 +172,6 @@ class News extends BaseController
                     'mime_in' => 'Gambar hanya boleh PNG, JPG, dan JPEG'
                 ]
             ],
-            'deskripsi-gambar' => [
-                'rules' => 'required|max_length[35]',
-                'errors' => [
-                    'required' => 'Deskripsi gambar harus diisi',
-                    'max_length' => 'Deskripsi gambar maksimal 35 Karakter'
-                ]
-            ],
             'content' => [
                 'rules' => 'required',
                 'errors' => [
@@ -199,13 +183,12 @@ class News extends BaseController
 
             session()->setFlashdata('judul', $validation->getError('judul'));
             session()->setFlashdata('image', $validation->getError('image'));
-            session()->setFlashdata('deskripsi-gambar', $validation->getError('deskripsi-gambar'));
             session()->setFlashdata('content', $validation->getError('content'));
 
             return redirect()->back()->withInput();
         }
 
-        $slug = url_title($this->request->getVar('judul'), '-', true) . '-' . rand();
+        $slug = url_title($this->request->getVar('judul'), '-', true) .  '-' . date('omdHis', time());
 
         $image = $this->request->getFile('image');
         $oldImage = $news['image'];
@@ -221,7 +204,6 @@ class News extends BaseController
 
         $newsModel->update($news['news_id'], [
             'image' => $imageName,
-            'alt' => $this->request->getVar('deskripsi-gambar'),
             'title' => $judul,
             'slug' => $slug,
             'content' => $this->request->getVar('content'),

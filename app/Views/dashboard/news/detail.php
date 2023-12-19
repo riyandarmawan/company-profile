@@ -57,7 +57,7 @@
                             <!-- news detail -->
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <h4 class="text-center fb-3 fw-bold mt-2"><?= $news['title']; ?></h4>
-                                <div><img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover;" class="rounded my-3"></div>
+                                <div><img src="/assets/img/news/<?= $news['image']; ?>" alt="berita" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover;" class="rounded my-3"></div>
                                 <?php foreach ($paragraphs as $paragraph) : ?>
                                     <p class="small fw-medium text-indent-2rem"><?= $paragraph; ?></p>
                                 <?php endforeach; ?>
@@ -82,22 +82,13 @@
                                             <div class="col-md-8 col-lg-9">
                                                 <label for="image" class="form-control w-100 rounded d-flex align-items-center justify-content-center cursor-pointer position-relative <?= $session->getFlashdata('image') ? 'is-invalid' : ''; ?>" style="aspect-ratio: 45 / 28; width: 100%; border: 1px solid #dee2e6;" id="image-label">
                                                     <p class="news-text">Klik disini untuk upload gambar</p>
-                                                    <img src="/assets/img/news/<?= $news['image']; ?>" alt="" class="rounded h-100 position-absolute" id="news-image" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover; right: 0;">
+                                                    <img src="/assets/img/news/<?= $news['image']; ?>" alt="berita" class="rounded h-100 position-absolute" id="news-image" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover; right: 0;">
                                                 </label>
                                                 <div class="invalid-feedback">
                                                     <?= $session->getFlashdata('image'); ?>
                                                 </div>
                                                 <div class="pt-2">
                                                     <input type="file" name="image" id="image" class="d-none">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label for="deskripsi-gambar" class="col-md-4 col-lg-3 col-form-label">Deskripsi gambar</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input type="text" name="deskripsi-gambar" id="deskripsi-gambar" class="form-control <?= $session->getFlashdata('deskripsi-gambar') ? 'is-invalid' : ''; ?>" value="<?= session()->getFlashdata('deskripsi-gambar') ? $news['alt'] : old('deskripsi-gambar', $news['alt']); ?>">
-                                                <div class="invalid-feedback">
-                                                    <?= $session->getFlashdata('deskripsi-gambar'); ?>
                                                 </div>
                                             </div>
                                         </div>

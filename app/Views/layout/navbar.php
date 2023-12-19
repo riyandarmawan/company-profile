@@ -10,7 +10,7 @@
 
     <nav class="navigation" style="display: flex; gap: 1rem;">
         <a href="<?= base_url(); ?>">Beranda</a>
-        <a href="<?= base_url() . 'menu'; ?>">Menu</a>
+        <a href="<?= base_url() . 'product'; ?>">produk</a>
         <a href="<?= base_url() . 'news'; ?>">Berita</a>
     </nav>
 

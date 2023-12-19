@@ -537,8 +537,8 @@ line {
 
 .news .content .news-content .news-recomendation .news-text h3 {
     font-size: 1.4rem;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;

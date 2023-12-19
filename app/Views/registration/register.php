@@ -10,7 +10,7 @@
             <?= csrf_field(); ?>
             <div class="form-group position-relative file d-flex w-100 align-items-center flex-column">
                 <label for="profile"><img id="photo-profile" src="/assets/img/dashboard/user/default.jpg" alt="photo profile" class="rounded-circle"></label>
-                <input type="file" name="profile" id="profile" autocomplete="off" class="d-none" required>
+                <input type="file" name="profile" id="profile" autocomplete="off" class="d-none">
                 <?php if (session()->getFlashdata('profile')) : ?>
                     <div class="invalid-feedback d-block">
                         <p class="text-center mb-0"><?= session()->getFlashdata('profile'); ?></p>

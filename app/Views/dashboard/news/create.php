@@ -63,15 +63,6 @@ $member = $session->get('member') ?>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="deskripsi-gambar" class="col-md-4 col-lg-3 col-form-label">Deskripsi gambar</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input type="text" name="deskripsi-gambar" id="deskripsi-gambar" class="form-control <?= $session->getFlashdata('deskripsi-gambar') ? 'is-invalid' : ''; ?>" value="<?= $session->getFlashdata('deskripsi-gambar') ? '' : old('deskripsi-gambar'); ?>">
-                                            <div class="invalid-feedback">
-                                            <?= $session->getFlashdata('deskripsi-gambar'); ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
                                         <label for="content" class="col-md-4 col-lg-3 col-form-label">Isi Berita</label>
                                         <div class="col-md-8 col-lg-9">
                                             <textarea id="content" name="content" autocomplete="off" class="form-control <?= $session->getFlashdata('content') ? 'is-invalid' : ''; ?>" value="<?= $session->getFlashdata('content') ? '' : old('content'); ?>" rows="8" style="resize: none;"></textarea>

@@ -15,6 +15,10 @@
         <div class="alert alert-success" role="alert">
             <?= session()->getFlashdata('removeNews'); ?>
         </div>
+    <?php elseif (session()->getFlashdata('newsSuccess')) :  ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('newsSuccess'); ?>
+        </div>
     <?php endif; ?>
     <div class="table-responsive">
         <?php if ($session->get('member')['role'] == 'petugas') : ?>

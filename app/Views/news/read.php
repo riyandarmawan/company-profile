@@ -11,8 +11,7 @@
             <li class="breadcrumb-item active" aria-current="page"><?= $news['title']; ?></li>
         </ol>
     </nav>
-    <img src="/assets/img/news/<?= $news['image']; ?>" alt="<?= $news['alt']; ?>" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover; object-position: center;" class="rounded my-2">
-    <p style="font-weight: 100; color: gray;">Ilustrasi : <?= $news['alt']; ?></p>
+    <img src="/assets/img/news/<?= $news['image']; ?>" alt="berita" style="aspect-ratio: 45 / 28; width: 100%; object-fit: cover; object-position: center;" class="rounded my-2">
     <h2 class="my-2 fs-1 fw-medium"><?= $news['title']; ?></h2>
     <?php foreach ($paragraphs as $paragraph) : ?>
         <p class="text-justify fs-5 my-2 fw-normal"><?= $paragraph; ?></p>

@@ -32,7 +32,7 @@
 <section class="product" id="product">
     <div class="row">
         <div class="col">
-            <h2 class="text-center">Menu <span>Kami</span></h2>
+            <h2 class="text-center">Produk <span>Kami</span></h2>
             <div class="row">
                 <main class="content w-100" style="display: grid; grid-template-columns: auto auto auto;">
                     <div class="product-group d-flex flex-column align-items-center mx-5 my-4">

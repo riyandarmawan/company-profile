@@ -45,7 +45,7 @@ $session = \Config\Services::session(); ?>
         <li class="nav-item">
           <a class="nav-link <?= $currentPage != 'menu' ? 'collapsed' : ''; ?>" href="/dashboard/menu">
           <span class="material-symbols-outlined news-icon">coffee_maker</span>
-            <span>Menu</span>
+            <span>Produk</span>
           </a>
         </li>
       <?php endif; ?>

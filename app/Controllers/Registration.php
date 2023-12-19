@@ -198,7 +198,11 @@ class Registration extends BaseController
 
         $session->set('member', $user);
 
-        return redirect()->back();
+        if($session->get('member')['role'] == 'pengunjung') {
+            return redirect()->back();
+        } else {
+            return redirect()->to(base_url() . 'dashboard');
+        }
     }
 
     public function logout()
