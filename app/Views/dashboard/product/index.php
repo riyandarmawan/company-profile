@@ -28,7 +28,7 @@
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                    <th>Nama</th>
+                    <th>Judul</th>
                     <th>Deskripsi</th>
                     <th>Harga</th>
                     <th>&nbsp;</th>
@@ -53,7 +53,7 @@
             </tbody>
         </table>
         <?php if (!$products) : ?>
-            <p class="text-center">Product tidak ada</p>
+            <p class="text-center">Produk tidak ada</p>
         <?php endif; ?>
     </div>
     <?= $pager->links('product', 'custom_pagination'); ?>

@@ -39,4 +39,20 @@ class Product extends BaseController
 
         return view('dashboard/product/index', $data);
     }
+
+    public function create(): string
+    {
+        $productModel = new ProductModel();
+
+        $data = [
+            'title' => 'Tambah Produk',
+        ];
+
+        return view('dashboard/product/create', $data);
+    }
+
+    public function save()
+    {
+        $productModel = new ProductModel();
+    }
 }

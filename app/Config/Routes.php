@@ -12,6 +12,8 @@ $routes->get('/', 'Home::index');
 // product
 $routes->get('/product', 'Product::index');
 $routes->get('/dashboard/product', 'Product::table');
+$routes->get('/dashboard/product/create', 'Product::create');
+$routes->post('/dashboard/product/create', 'Product::save');
 
 // news
 $routes->get('/news', 'News::index');

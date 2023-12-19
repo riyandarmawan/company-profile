@@ -14,7 +14,7 @@ class ProductModel extends Model
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['gambar_product', 'nama_product', 'deskripsi_product', 'harga_product'];
+    protected $allowedFields = ['product_image', 'product_title', 'product_description', 'product_price'];
 
     // Dates
     protected $useTimestamps = true;
