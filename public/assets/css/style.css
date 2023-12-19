@@ -126,6 +126,45 @@ line {
 .c-primary {
     color: var(--primary);
 }
+
+.btn-c-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--secondary);
+    --bs-btn-hover-border-color: var(--secondary);
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--secondary);
+    --bs-btn-active-border-color: var(--secondary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #3f2716;
+    --bs-btn-disabled-border-color: #3f2716;
+}
+
+.shopping-cart circle {
+    color: white !important;
+}
+
+.card .card-body .card-text {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.card {
+    --bs-card-border-color: grey;
+    --bs-card-color: white;
+    background-color: transparent;
+}
+
+.group.container-card {
+    padding: 7rem 10%;
+}
 /* bootstrap end */
 
 /* header start */
@@ -508,7 +547,7 @@ line {
 
 .news .content .news-content {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns:  repeat(auto-fit, minmax(18rem, 1fr));
     gap: 2rem;
 }
 

@@ -9,6 +9,10 @@ use CodeIgniter\Router\RouteCollection;
 // home
 $routes->get('/', 'Home::index');
 
+// product
+$routes->get('/product', 'Product::index');
+$routes->get('/dashboard/product', 'Product::table');
+
 // news
 $routes->get('/news', 'News::index');
 $routes->get('/news/(:segment)', 'News::read/$1');

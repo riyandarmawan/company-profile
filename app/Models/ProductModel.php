@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PeoductModel extends Model
+class ProductModel extends Model
 {
     protected $table      = 'product';
     protected $primaryKey = 'product_id';
@@ -14,7 +14,7 @@ class PeoductModel extends Model
     protected $returnType     = 'array';
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['gambar_product', 'nama_product', 'harga_product'];
+    protected $allowedFields = ['gambar_product', 'nama_product', 'deskripsi_product', 'harga_product'];
 
     // Dates
     protected $useTimestamps = true;

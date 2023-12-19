@@ -7,9 +7,9 @@
             <a href="#" class="c-white mx-3"><i data-feather="youtube"></i></a>
         </div>
         <div class="navigate">
-            <a href="#home" class="c-white mx-2">Beranda</a>
-            <a href="#product" class="c-white mx-2">Produk</a>
-            <a href="#contact" class="c-white mx-2">Kontak</a>
+            <a href="<?= base_url(); ?>" class="c-white mx-2">Beranda</a>
+            <a href="<?= base_url() . 'product'; ?>" class="c-white mx-2">Produk</a>
+            <a href="<?= base_url() . 'news'; ?>" class="c-white mx-2">Berita</a>
         </div>
         <div class="credit">
             <p class="m-0">&copy;2023 <a href="" class="c-black">MyCoffee</a> | All Rights Reserved</p>

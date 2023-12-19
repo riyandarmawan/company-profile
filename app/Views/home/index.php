@@ -57,7 +57,7 @@
                     </div>
                 </main>
             </div>
-            <a href="<?= base_url() . 'news'; ?>" class="c-primary fs-5 my-5 text-center w-100 d-inline-block"><< Muat Lebih >></a>
+            <a href="<?= base_url() . 'product'; ?>" class="c-primary fs-5 my-5 text-center w-100 d-inline-block"><< Muat Lebih >></a>
         </div>
     </div>
 </section>

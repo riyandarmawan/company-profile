@@ -4,23 +4,17 @@
 
 <div class="news" id="news">
     <main class="content">
-        <div class="group d-flex w-100 justify-content-between m-4 align-items-center">
-            <nav aria-label="breadcrumb" style="height: 1rem; line-height: 1rem;">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url(); ?>">Beranda</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Berita</li>
-                </ol>
-            </nav>
-            <div class="search-bar">
+        <div class="group m-3 w-100 d-flex justify-content-end">
+            <div class="search-bar w-25 mx-2">
                 <form class="search-form d-flex align-items-center" method="get" action="">
-                    <input type="text" name="keyword" placeholder="Search" title="Enter search keyword">
+                    <input type="text" name="keyword" placeholder="Search" title="Enter search keyword" autofocus>
                     <button type="submit" title="Search"><i data-feather="search"></i></button>
                 </form>
             </div><!-- End Search Bar -->
         </div>
-        <div class="news-content mb-5">
+        <div class="news-content mb-5 w-100">
             <?php foreach ($allNews as $news) : ?>
-                <div class="news-recomendation">
+                <div class="news-recomendation" style="max-width: 25rem;">
                     <img src="/assets/img/news/<?= $news['image']; ?>" alt="Berita">
                     <div class="news-text">
                         <h3><?= $news['title']; ?></h3>
@@ -30,6 +24,9 @@
                 </div>
             <?php endforeach; ?>
         </div>
+        <?php if (!$allnews) : ?>
+            <p class="text-center">Berita tidak ada</p>
+        <?php endif; ?>
         <?= $pager->links('news', 'custom_pagination'); ?>
     </main>
 </div>

@@ -43,7 +43,7 @@ $session = \Config\Services::session(); ?>
 
       <?php if ($session->get('member')['role'] != 'pengunjung') : ?>
         <li class="nav-item">
-          <a class="nav-link <?= $currentPage != 'menu' ? 'collapsed' : ''; ?>" href="/dashboard/menu">
+          <a class="nav-link <?= $currentPage != 'product' ? 'collapsed' : ''; ?>" href="/dashboard/product">
           <span class="material-symbols-outlined news-icon">coffee_maker</span>
             <span>Produk</span>
           </a>

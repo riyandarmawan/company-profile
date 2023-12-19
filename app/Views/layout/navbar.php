@@ -5,7 +5,7 @@
         <span class="material-symbols-outlined hamburger-menu">
             menu
         </span>
-        <a href="">My<span>Coffee</span></a>
+        <a href="<?= base_url(); ?>">My<span>Coffee</span></a>
     </div>
 
     <nav class="navigation" style="display: flex; gap: 1rem;">
