@@ -14,6 +14,9 @@ $routes->get('/product', 'Product::index');
 $routes->get('/dashboard/product', 'Product::table');
 $routes->get('/dashboard/product/create', 'Product::create');
 $routes->post('/dashboard/product/create', 'Product::save');
+$routes->get('/dashboard/product/detail/(:segment)', 'Product::detail/$1');
+$routes->post('/dashboard/product/detail/(:segment)', 'Product::update/$1');
+$routes->get('/dashboard/product/detail/delete/(:num)', 'Product::delete/$1');
 
 // news
 $routes->get('/news', 'News::index');

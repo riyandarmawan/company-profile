@@ -33,7 +33,7 @@ $member = $session->get('member') ?>
                                         <div class="col-md-8 col-lg-9">
                                             <label for="product-image-input" class="form-control w-100 rounded d-flex align-items-center justify-content-center cursor-pointer position-relative <?= $session->getFlashdata('product-image') ? 'is-invalid' : ''; ?>" style="aspect-ratio: 1 / 1; height: 10rem; width: 10rem !important; border: 1px solid #dee2e6;" id="product-image-label">
                                                 <p class="product-text text-center m-0">Klik disini untuk upload gambar</p>
-                                                <img src="" alt="" class="d-none h-100 position-absolute" id="product-image" style="aspect-ratio: 1 / 1; width: 100%; object-fit: cover;">
+                                                <img src="" alt="" class="d-none h-100 position-absolute" id="product-image" style="aspect-ratio: 1 / 1; width: 100%; object-fit: cover; top: 0; left: 0; right: 0; bottom: 0;">
                                             </label>
                                             <div class="invalid-feedback">
                                                 <?= $session->getFlashdata('product-image'); ?>

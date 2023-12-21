@@ -39,12 +39,12 @@
                 foreach ($products as $product) : ?>
                     <tr class="alert" role="alert">
                         <td><?= $counter; ?></td>
-                        <td><?= $product['nama_product']; ?></td>
-                        <td><?= strlen($product['content']) > 50 ? substr($product['content'], 0, 50) . '...' : substr($product['content'], 0, 50); ?></td>
-                        <td><?= $product['harga_product']; ?></td>
+                        <td><?= $product['product_title']; ?></td>
+                        <td><?= strlen($product['product_description']) > 70 ? substr($product['product_description'], 0, 70) . '...' : substr($product['product_description'], 0, 70); ?></td>
+                        <td><?= number_format($product['product_price'], 0, '.', '.'); ?></td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="<?= base_url() . 'dashboard/product/detail/' . $product['product_id']; ?>" class="text-dark me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
+                                <a href="<?= base_url() . 'dashboard/product/detail/' . $product['product_slug']; ?>" class="text-dark me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>
                             </div>
                         </td>
                     </tr>

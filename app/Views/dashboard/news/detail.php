@@ -7,7 +7,7 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Pesan</h1>
+        <h1>Detail berita</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?= base_url() . 'dashboard'; ?>">Beranda</a></li>

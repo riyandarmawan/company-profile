@@ -1,4 +1,4 @@
-<footer class="footer mt-5 d-flex justify-content-center">
+<footer class="footer d-flex justify-content-center" style="margin-top: 10rem;">
     <main class="content d-flex flex-column justify-content-evenly align-items-center">
         <div class="social-media">
             <a href="#" class="c-white mx-3"><i data-feather="instagram"></i></a>

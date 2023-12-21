@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-    const grid = document.querySelector('.group.container-card');
+    const grid = document.querySelector('.group.grid');
     const cardCount = grid.querySelectorAll('.card').length;
     if (cardCount < 3) {
         grid.style.gridTemplateColumns = '23rem 23rem';
