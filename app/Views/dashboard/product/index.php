@@ -41,7 +41,7 @@
                         <td><?= $counter; ?></td>
                         <td><?= $product['product_title']; ?></td>
                         <td><?= strlen($product['product_description']) > 70 ? substr($product['product_description'], 0, 70) . '...' : substr($product['product_description'], 0, 70); ?></td>
-                        <td><?= number_format($product['product_price'], 0, '.', '.'); ?></td>
+                        <td>Rp. <?= number_format($product['product_price'], 0, '.', '.'); ?></td>
                         <td>
                             <div class="d-flex align-items-center">
                                 <a href="<?= base_url() . 'dashboard/product/detail/' . $product['product_slug']; ?>" class="text-dark me-2 d-flex align-items-center"><span class="material-symbols-outlined">more_horiz</span></a>

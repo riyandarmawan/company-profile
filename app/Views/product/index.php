@@ -14,6 +14,11 @@
                 </form>
             </div><!-- End Search Bar -->
         </div>
+        <?php if (session()->getFlashdata('orderSuccess')) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('orderSuccess'); ?>
+            </div>
+        <?php endif; ?>
         <div class="group grid mb-5" style="display: grid; grid-template-columns:  repeat(auto-fit, minmax(18rem, 1fr)); gap: 2rem;">
             <?php foreach ($products as $product) : ?>
                 <div class="card">
@@ -22,7 +27,7 @@
                         <h5 class="card-title"><?= $product['product_title']; ?></h5>
                         <p class="card-text text-justify mb-1"><?= $product['product_description']; ?></p>
                         <h5 class="card-text text-justify">Rp. <?= number_format($product['product_price'], 0, '.', '.'); ?></h5>
-                        <a href="#" class="btn btn-c-primary d-flex align-items-center" style="gap: .5rem;"><i data-feather="shopping-cart" class="shopping-cart"></i> Pesan Sekarang</a>
+                        <a href="<?= base_url() . 'product/order/' . $product['product_id']; ?>" class="btn btn-c-primary d-flex align-items-center" style="gap: .5rem;"><i data-feather="shopping-cart" class="shopping-cart"></i> Pesan Sekarang</a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -31,7 +36,7 @@
     </div>
 <?php else : ?>
     <div class="container">
-        <p  class="text-center">anda harus <a href="<?= base_url() . 'registration/login'; ?>">Login</a> untuk bisa mengakses fitur ini</p>
+        <p class="text-center">anda harus <a href="<?= base_url() . 'registration/login'; ?>">Login</a> untuk bisa mengakses fitur ini</p>
     </div>
 <?php endif; ?>
 

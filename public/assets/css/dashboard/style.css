@@ -20,6 +20,10 @@ body {
     color: #444444;
 }
 
+.c-warning {
+    color: #ff9101 !important;
+}
+
 #product-image-label.is-invalid {
     border: 1px solid var(--bs-form-invalid-color) !important;
 }

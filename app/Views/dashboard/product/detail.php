@@ -105,7 +105,7 @@
                                         <div class="row mb-3">
                                             <label for="product-price" class="col-md-4 col-lg-3 col-form-label">Harga Produk</label>
                                             <div class="col-md-8 col-lg-9">
-                                                <input type="number" name="product-price" id="product-price" class="form-control <?= $session->getFlashdata('product-price') ? 'is-invalid' : ''; ?>" value="<?= $session->getFlashdata('product-price') ? $product['product_price'] : old('product-price', $product['product_price']); ?>">
+                                                <input type="number" name="product-price" id="product-price" class="form-control <?= $session->getFlashdata('product-price') ? 'is-invalid' : ''; ?>" value="Rp. <?= $session->getFlashdata('product-price') ? $product['product_price'] : old('product-price', $product['product_price']); ?>">
                                                 <div class="invalid-feedback">
                                                     <?= $session->getFlashdata('product-price'); ?>
                                                 </div>
