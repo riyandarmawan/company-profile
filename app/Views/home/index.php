@@ -1,3 +1,5 @@
+<?php $session = \Config\Services::session(); ?>
+
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
@@ -32,8 +34,13 @@
 <section class="product" id="product">
     <div class="row">
         <div class="col">
-            <h2 class="text-center">Produk <span>Kami</span></h2>
+            <h2 class="text-center mb-5">Produk <span>Kami</span></h2>
             <div class="row">
+                <?php if (session()->getFlashdata('orderSuccess')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('orderSuccess'); ?>
+                    </div>
+                <?php endif; ?>
                 <main class="content w-100" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 5rem;">
                     <?php foreach ($products as $product) : ?>
                         <div class="card">
@@ -42,14 +49,13 @@
                                 <h5 class="card-title"><?= $product['product_title']; ?></h5>
                                 <p class="card-text text-justify mb-1" style="-webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; display: -webkit-box;"><?= $product['product_description']; ?></p>
                                 <h5 class="card-text text-justify">Rp. <?= number_format($product['product_price'], 0, '.', '.'); ?></h5>
-                                <a href="<?= base_url() . 'product/order/' . $product['product_id']; ?>" class="btn btn-c-primary d-flex align-items-center" style="gap: .5rem;"><i data-feather="shopping-cart" class="shopping-cart"></i> Pesan Sekarang</a>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </main>
             </div>
             <a href="<?= base_url() . 'product'; ?>" class="c-primary fs-5 my-5 text-center w-100 d-inline-block card-muat">
-                << Muat Lebih>>
+                << Pesan disini >>
             </a>
         </div>
     </div>
