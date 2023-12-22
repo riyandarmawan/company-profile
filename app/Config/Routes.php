@@ -35,11 +35,15 @@ $routes->post('/dashboard/my-profile', 'Registration::update');
 $routes->post('/dashboard/my-profile/change-password', 'Registration::changePassword');
 $routes->get('/dashboard/my-profile/remove/(:num)', 'Registration::remove/$1');
 
-// dashboard order
+// dashboard order list
 $routes->get('/product/order/(:num)', 'Order::save/$1');
 $routes->get('/dashboard/order-list', 'Order::list');
 $routes->get('/dashboard/order-list/detail/(:num)', 'Order::detail/$1');
 $routes->post('/dashboard/order-list/detail/(:num)', 'Order::update/$1');
+
+// dashboard my order
+$routes->get('/dashboard/my-order', 'Order::myOrder');
+$routes->get('/dashboard/my-order/delete/(:num)', 'Order::delete/$1');
 
 // dashboard user
 $routes->get('/dashboard/user', 'User::index');

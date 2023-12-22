@@ -71,7 +71,7 @@ $member = $session->get('member') ?>
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Tambah Berita</button>
+                                        <button type="submit" class="btn btn-primary">Tambah Produk</button>
                                     </div>
                                 </form><!-- End Profile Edit Form -->
 

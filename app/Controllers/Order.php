@@ -20,7 +20,7 @@ class Order extends BaseController
         $keyword = $this->request->getVar('keyword');
 
         if ($keyword) {
-            $orderModel = $orderModel->like('user.nama', $keyword)->orLike('product.product_title', $keyword)->orLike('product.harga_product', $keyword)->orLike('status', $keyword);
+            $orderModel = $orderModel->like('user.nama', $keyword)->orLike('product.product_title', $keyword)->orLike('product.product_price', $keyword)->orLike('order_status', $keyword);
         }
 
         $data = [
@@ -31,6 +31,36 @@ class Order extends BaseController
         ];
 
         return view('/dashboard/order/list', $data);
+    }
+
+    public function myOrder(): string
+    {
+        $session = \Config\Services::session();
+
+        $orderModel = new OrderModel();
+        $orderModel = $orderModel->join('user', 'order.order_user_id = user.user_id');
+        $orderModel = $orderModel->join('product', 'order.order_product_id = product.product_id');
+
+        $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
+        $totalData = 10;
+        session()->setFlashdata('totalData', $totalData);
+
+        $keyword = $this->request->getVar('keyword');
+
+        if ($keyword) {
+            $orderModel = $orderModel->Like('product.product_title', $keyword)->orLike('product.product_price', $keyword)->orLike('order_status', $keyword);
+        }
+
+        $orderModel->where('user.username', $session->get('member')['username']);
+
+        $data = [
+            'title' => 'Pesanan Saya',
+            'orders' => $orderModel->orderBy('order_id', 'DESC')->paginate(10, 'order'),
+            'pager' => $orderModel->pager,
+            'currentPage' => $currentPage
+        ];
+
+        return view('/dashboard/order/my-order', $data);
     }
 
     public function detail($orderId)
@@ -76,8 +106,21 @@ class Order extends BaseController
             'order_status' => $this->request->getVar('status')
         ]);
 
-        session()->setFlashdata('orderSuccess', 'Status berhasil diubah');
+        session()->setFlashdata('statusSuccess', 'Status berhasil diubah');
 
         return redirect()->to(base_url() . 'dashboard/order-list');
+    }
+
+    public function delete($id)
+    {
+        $session = \Config\Services::session();
+
+        $orderModel = new OrderModel();
+
+        $orderModel->delete($id);
+
+        session()->setFlashdata('orderSuccess', 'Pesanan berhasil dihapus');
+
+        return redirect()->to(base_url() . 'dashboard/my-order');
     }
 }

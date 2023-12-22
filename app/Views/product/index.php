@@ -25,7 +25,7 @@
                     <img src="/assets/img/product/<?= $product['product_image']; ?>" class="card-img-top" alt="produk" style="object-fit: cover; aspect-ratio: 1 / 1;">
                     <div class="card-body">
                         <h5 class="card-title"><?= $product['product_title']; ?></h5>
-                        <p class="card-text text-justify mb-1"><?= $product['product_description']; ?></p>
+                        <p class="card-text text-justify mb-1" style="-webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; display: -webkit-box;"><?= $product['product_description']; ?></p>
                         <h5 class="card-text text-justify">Rp. <?= number_format($product['product_price'], 0, '.', '.'); ?></h5>
                         <a href="<?= base_url() . 'product/order/' . $product['product_id']; ?>" class="btn btn-c-primary d-flex align-items-center" style="gap: .5rem;"><i data-feather="shopping-cart" class="shopping-cart"></i> Pesan Sekarang</a>
                     </div>

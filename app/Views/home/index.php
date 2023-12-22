@@ -7,7 +7,7 @@
     <main class="content">
         <h2>Selamat Datang, di My<span>Coffee</span></h2>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure fugit error culpa, nulla explicabo non?</p>
-        <a href="#">Pesan Sekarang!</a>
+        <a href="<?= base_url() . 'product'; ?>">Pesan Sekarang!</a>
     </main>
 </section>
 <!-- home end -->
@@ -34,30 +34,23 @@
         <div class="col">
             <h2 class="text-center">Produk <span>Kami</span></h2>
             <div class="row">
-                <main class="content w-100" style="display: grid; grid-template-columns: auto auto auto;">
-                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                        <p class="mb-2 fs-7">IDR 13K</p>
-                    </div>
-                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                        <p class="mb-2 fs-7">IDR 13K</p>
-                    </div>
-                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                        <p class="mb-2 fs-7">IDR 13K</p>
-                    </div>
-                    <div class="product-group d-flex flex-column align-items-center mx-5 my-4">
-                        <img class="rounded-circle mb-2" src="/assets/img/product/1.jpg" alt="Cappucino">
-                        <h3 class="mb-2 fs-5">- Cappucino -</h3>
-                        <p class="mb-2 fs-7">IDR 13K</p>
-                    </div>
+                <main class="content w-100" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 5rem;">
+                    <?php foreach ($products as $product) : ?>
+                        <div class="card">
+                            <img src="/assets/img/product/<?= $product['product_image']; ?>" class="card-img-top" alt="produk" style="object-fit: cover; aspect-ratio: 1 / 1;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $product['product_title']; ?></h5>
+                                <p class="card-text text-justify mb-1" style="-webkit-line-clamp: 1; line-clamp: 1; overflow: hidden; display: -webkit-box;"><?= $product['product_description']; ?></p>
+                                <h5 class="card-text text-justify">Rp. <?= number_format($product['product_price'], 0, '.', '.'); ?></h5>
+                                <a href="<?= base_url() . 'product/order/' . $product['product_id']; ?>" class="btn btn-c-primary d-flex align-items-center" style="gap: .5rem;"><i data-feather="shopping-cart" class="shopping-cart"></i> Pesan Sekarang</a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </main>
             </div>
-            <a href="<?= base_url() . 'product'; ?>" class="c-primary fs-5 my-5 text-center w-100 d-inline-block"><< Muat Lebih >></a>
+            <a href="<?= base_url() . 'product'; ?>" class="c-primary fs-5 my-5 text-center w-100 d-inline-block card-muat">
+                << Muat Lebih>>
+            </a>
         </div>
     </div>
 </section>
@@ -79,7 +72,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <a href="<?= base_url() . 'news'; ?>" class="c-primary fs-5 m-5">
+        <a href="<?= base_url() . 'news'; ?>" class="c-primary fs-5 m-5 card-muat">
             << Muat Lebih>>
         </a>
     </main>

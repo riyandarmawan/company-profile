@@ -18,7 +18,7 @@ class Product extends BaseController
         $keyword = $this->request->getVar('keyword');
 
         if ($keyword) {
-            $productModel = $productModel->like('nama_product', $keyword)->orLike('deskripsi_product', $keyword)->orLike('harga_product', $keyword);
+            $productModel = $productModel->like('product_title', $keyword)->orLike('product_description', $keyword)->orLike('product_price', $keyword);
         }
 
         $data = [
@@ -42,7 +42,7 @@ class Product extends BaseController
         $keyword = $this->request->getVar('keyword');
 
         if ($keyword) {
-            $productModel = $productModel->like('nama_product', $keyword)->orLike('deskripsi_product', $keyword)->orLike('harga_product', $keyword);
+            $productModel = $productModel->like('product_title', $keyword)->orLike('product_description', $keyword)->orLike('product_price', $keyword);
         }
 
         $data = [

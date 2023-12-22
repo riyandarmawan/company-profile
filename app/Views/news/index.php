@@ -24,7 +24,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <?php if (!$allnews) : ?>
+        <?php if (!$allNews) : ?>
             <p class="text-center">Berita tidak ada</p>
         <?php endif; ?>
         <?= $pager->links('news', 'custom_pagination'); ?>
