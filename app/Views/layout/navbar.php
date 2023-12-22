@@ -31,12 +31,21 @@
                         <hr class="dropdown-divider">
                     </li>
 
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="dashboard">
-                            <span class="material-symbols-outlined me-2 text-dark">grid_view</span>
-                            <span class="text-dark">Dashboard</span>
-                        </a>
-                    </li>
+                    <?php if ($session->get('member')['role'] != 'pengunjung') : ?>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="dashboard">
+                                <span class="material-symbols-outlined me-2 text-dark">grid_view</span>
+                                <span class="text-dark">Dashboard</span>
+                            </a>
+                        </li>
+                    <?php elseif ($session->get('member')['role'] == 'pengunjung') : ?>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="dashboard/my-order">
+                                <span class="material-symbols-outlined text-dark" style="margin-left: -3px; margin-right: 10px;">shopping_bag</span>
+                                <span class="text-dark">Pesanan Saya</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
 
                     <li>
                         <hr class="dropdown-divider">

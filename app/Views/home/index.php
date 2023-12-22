@@ -115,7 +115,7 @@
                 <div class="invalid-feedback">
                     <?= session()->getFlashdata('pesanGagal'); ?>
                 </div>
-                <button type="submit">Kirim</button>
+                <button type="submit" <?= !$member ? 'disabled' : ''; ?> class="<?= !$member ? 'btn btn-secondary disabled ' : ''; ?>">Kirim</button>
             </form>
         </div>
     </main>

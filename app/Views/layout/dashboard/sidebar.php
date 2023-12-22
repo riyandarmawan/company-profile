@@ -6,13 +6,15 @@ $session = \Config\Services::session(); ?>
 
   <ul class="sidebar-nav" id="sidebar-nav">
 
-    <div class="group">
-      <li class="nav-item">
-        <a class="nav-link <?= $currentPage != 'dashboard' ? 'collapsed' : ''; ?>" href="/dashboard">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
+    <?php if ($session->get('member')['role'] != 'pengunjung') : ?>
+      <div class="group">
+        <li class="nav-item">
+          <a class="nav-link <?= $currentPage != 'dashboard' ? 'collapsed' : ''; ?>" href="/dashboard">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+      <?php endif; ?>
 
       <?php if ($session->get('member')['role'] == 'pengunjung') : ?>
         <li class="nav-item">
@@ -67,32 +69,32 @@ $session = \Config\Services::session(); ?>
           </a>
         </li>
       <?php endif; ?>
-    </div>
+      </div>
 
-    <div class="group">
-      <li class="nav-heading">Pages</li>
+      <div class="group">
+        <li class="nav-heading">Pages</li>
 
-      <li class="nav-item">
-        <a class="nav-link <?= $currentPage != 'my-profile' ? 'collapsed' : ''; ?>" href="/dashboard/my-profile">
-          <i class="bi bi-person"></i>
-          <span>Profil Saya</span>
-        </a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $currentPage != 'my-profile' ? 'collapsed' : ''; ?>" href="/dashboard/my-profile">
+            <i class="bi bi-person"></i>
+            <span>Profil Saya</span>
+          </a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link <?= $currentPage != base_url() ? 'collapsed' : ''; ?>" href="<?= base_url(); ?>">
-          <i class="bi bi-house-door"></i>
-          <span>Beranda</span>
-        </a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $currentPage != base_url() ? 'collapsed' : ''; ?>" href="<?= base_url(); ?>">
+            <i class="bi bi-house-door"></i>
+            <span>Beranda</span>
+          </a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link <?= $currentPage != 'logout' ? 'collapsed' : ''; ?>" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-          <i class="bi bi-box-arrow-left"></i>
-          <span>Logout</span>
-        </a>
-      </li>
-    </div>
+        <li class="nav-item">
+          <a class="nav-link <?= $currentPage != 'logout' ? 'collapsed' : ''; ?>" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </div>
   </ul>
 
 </aside>

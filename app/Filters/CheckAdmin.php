@@ -12,7 +12,7 @@ class CheckAdmin implements FilterInterface
         $session = \Config\Services::session();
 
         if($session->get('member')['role'] === 'pengunjung') {
-            return redirect()->to(base_url() . 'dashboard');
+            return redirect()->to(base_url() . 'dashboard/my-order');
         }
     }
 
